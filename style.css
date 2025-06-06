@@ -1,0 +1,44 @@
+body {
+  font-family: Georgia, serif;
+  background: #fdfdfd;
+  color: #222;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+  text-align: center;
+}
+
+.profile-pic {
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.2rem;
+}
+
+nav {
+  margin: 1.5rem 0;
+}
+
+nav a {
+  margin: 0 1rem;
+  text-decoration: none;
+  color: #a41034;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+section {
+  text-align: left;
+  margin-top: 2rem;
+}
