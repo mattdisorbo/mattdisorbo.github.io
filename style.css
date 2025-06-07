@@ -42,3 +42,19 @@ section {
   text-align: left;
   margin-top: 2rem;
 }
+
+
+.social-icons {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.social-icons a {
+  margin: 0 10px;
+  color: #333; /* or your preferred color */
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #0072b1; /* LinkedIn blue for hover, or customize */
+}
