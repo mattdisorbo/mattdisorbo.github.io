@@ -139,22 +139,47 @@
   </p>
 
   <h3>Selected Student Reviews</h3>
-  <blockquote>
-    <p><em>"Legitimately the most effective and enthusiastic teaching fellow I have ever experienced at Harvard. Funny, helpful, and dedicated, Matt is one of those people whose sheer quality will outshine the overall memory of the class. Any class with Matt as a TF is a safe choice for me."</em></p>
-  </blockquote>
 
-  <blockquote>
-    <p><em>"Matt was a critical addition to this course and left behind a really powerful legacy. I hope someone will come into this course with the same enthusiasm and care that he committed. When I started going to his sections, the material was 100% illuminated. He clearly cared about our success, and I appreciated everything he did to help us."</em></p>
-  </blockquote>
+<div id="quotes-container"></div>
 
-  <blockquote>
-    <p><em>"Without a doubt the best section leader I have ever had. His instruction was what helped me understand difficult concepts and his materials are incredibly impressive. He's incredibly personal and accessible and phenomenal overall."</em></p>
-  </blockquote>
+<button id="new-quotes-btn">Show New Reviews</button>
 
-  <blockquote>
-    <p><em>"Matt is the best TF I've ever had. Period. He works incredibly hard to do the homeworks before students, hold useful sections, and make material seem understandable. He is also fun to talk to and approachable. I really look up to Matt as a TF and as a student. He represents some of the best that Harvard has to offer."</em></p>
-  </blockquote>
+<script>
+  // All your quotes go here
+  const allQuotes = [
+    `"Legitimately the most effective and enthusiastic teaching fellow I have ever experienced at Harvard. Funny, helpful, and dedicated, Matt is one of those people whose sheer quality will outshine the overall memory of the class. Any class with Matt as a TF is a safe choice for me."`,
+    `"Matt was a critical addition to this course and left behind a really powerful legacy. I hope someone will come into this course with the same enthusiasm and care that he committed. When I started going to his sections, the material was 100% illuminated. He clearly cared about our success, and I appreciated everything he did to help us."`,
+    `"Without a doubt the best section leader I have ever had. His instruction was what helped me understand difficult concepts and his materials are incredibly impressive. He's incredibly personal and accessible and phenomenal overall."`,
+    `"Matt is the best TF I've ever had. Period. He works incredibly hard to do the homeworks before students, hold useful sections, and make material seem understandable. He is also fun to talk to and approachable. I really look up to Matt as a TF and as a student. He represents some of the best that Harvard has to offer."`,
+    `"Matt made statistics actually fun. His explanations clicked better than any lecture, and his energy made our 9am section the highlight of my week."`,
+    `"Every time I left Matt’s section, I understood more than I thought I could. He’s the reason I passed this course."`,
+    `"Matt is simply an outstanding educator — passionate, clear, and generous with his time."`,
+    `"He went above and beyond for every student. I’ve never had a TF care this much about us learning."`
+  ];
 
+  // Function to show 5 random quotes
+  function showRandomQuotes() {
+    const container = document.getElementById("quotes-container");
+    container.innerHTML = ""; // clear existing quotes
+
+    // Shuffle and take 5
+    const shuffled = allQuotes.sort(() => 0.5 - Math.random());
+    const selected = shuffled.slice(0, 5);
+
+    // Add to DOM
+    selected.forEach(q => {
+      const block = document.createElement("blockquote");
+      block.innerHTML = `<p><em>${q}</em></p>`;
+      container.appendChild(block);
+    });
+  }
+
+  // Show quotes on first load
+  showRandomQuotes();
+
+  // Add click listener
+  document.getElementById("new-quotes-btn").addEventListener("click", showRandomQuotes);
+</script>
 </section>
 
   </div>
