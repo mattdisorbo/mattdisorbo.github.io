@@ -151,14 +151,324 @@
 <script>
   // All your quotes go here
   const allQuotes = [
-    `"Legitimately the most effective and enthusiastic teaching fellow I have ever experienced at Harvard. Funny, helpful, and dedicated, Matt is one of those people whose sheer quality will outshine the overall memory of the class. Any class with Matt as a TF is a safe choice for me."`,
-    `"Matt was a critical addition to this course and left behind a really powerful legacy. I hope someone will come into this course with the same enthusiasm and care that he committed. When I started going to his sections, the material was 100% illuminated. He clearly cared about our success, and I appreciated everything he did to help us."`,
-    `"Without a doubt the best section leader I have ever had. His instruction was what helped me understand difficult concepts and his materials are incredibly impressive. He's incredibly personal and accessible and phenomenal overall."`,
-    `"Matt is the best TF I've ever had. Period. He works incredibly hard to do the homeworks before students, hold useful sections, and make material seem understandable. He is also fun to talk to and approachable. I really look up to Matt as a TF and as a student. He represents some of the best that Harvard has to offer."`,
-    `"Matt made statistics actually fun. His explanations clicked better than any lecture, and his energy made our 9am section the highlight of my week."`,
-    `"Every time I left Matt’s section, I understood more than I thought I could. He’s the reason I passed this course."`,
-    `"Matt is simply an outstanding educator — passionate, clear, and generous with his time."`,
-    `"He went above and beyond for every student. I’ve never had a TF care this much about us learning."`
+    `My favorite section leader by a pretty large margin. Very knowledgable and willing to make himself available
+to help students out. His focus on guided practice problem solving was key, and he did a great job of choosing
+problems that would increase understanding and help on that week’s Pset at the same time. Even better,
+his pace was perfect. He went quickly but was never rushed, making for a lot of learning in just over an
+hour.`,
+    `I was a regular attendee at Matt’s Thursday office hours and this man is AMAZING. A lot of the times I
+was just conceptually lost and needed someone to point me in the right direction without giving too much
+away, and he always did exactly that. His explanations are crystal clear, and I’m beyond thankful I stumbled
+across his OH early in the semester!`,
+    `Truly amazing at helping students think critically not only about the problems presented to them in homework, but about their overall understanding of concepts. He helped me learn a lot very effectively in a short
+period of time by spending time to ask me new questions very valuable to my learning. Can’t say enough
+great things!`,
+    `Matt’s office hours were excellent. He was really fair about giving every student equal attention. He
+explained things very clearly and helped me improve my understanding. Also, he was a super nice and
+welcoming person so I really enjoyed being at his office hours.`,
+    `Matthew was a great section leader, very helpful and approachable.`,
+    `Excellent section leader, who gives very thorough explanations and has a very strong grip on the subject
+matter. . . Wish they didn’t put his section in the morning, or I would’ve attended more consistently!`,
+    `Matt is always available to answer questions in a very patient way, and he does a good job of explaining
+concepts during his section.`,
+    `Matt is a great tf! He really helped me understand the material.`,
+    `Will miss having you around!`,
+    `He is super good! Amazing at making super duper hard concepts simple to understand and can really easily
+bridge the gap between professor and student talk.`,
+    `Matt’s sections are great! I think he struck the perfect balance between review of lecture material and going
+over problems. The problems he gave were very relevant to the homework, but just enough to give a hint
+about how to think about it without giving too much away. I also really appreciated the fact that he took
+it upon himself to write two practice exams; they really made me feel more prepared for both the midterm
+and the final.`,
+    `Matt was an excellent TF for Stat 110. He is clearly very dedicated to the course, even releasing his own
+study materials before the exam. He is probably the most committed TF I have ever had.`,
+    `Matt is the best TA I have had for any class ever. Not even close.`,
+    `One of the best undergraduate TFs I’ve ever had. Really knows the material and generates a lot of enthusiasm
+for the subject matter. Passionate about statistics and helpful all around!`,
+    `Matt DiSorbo is God.`,
+    `I never went to any of Matt’s sections, but I was present at his office hours, and I thought that he was
+extremely approachable and helpful in OH. I also thought that he was extremely helpful to me in being
+uber-accessible, to the point of having extra OH on an almost weekly basis.`,
+    `His presentations were incredibly useful for understanding the material and doing well in the class.`,
+    `Fantastic. Very simple explanations that are also very, very clear. Helped a lot to understand problem-solving
+methods.`,
+    `Absolutely amazing!!!! Creates wonderful handouts with excruciating detail that make Stat 110 accessible
+even to people who really don’t understand. Sections are great.`,
+    `Matt’s amazing!!`,
+    `great office hours. really cares about the class.`,
+    `Matt is a great TF although sometimes he moves too quickly with explanations in section.`,
+    `Goes above and beyond to facilitate student learning.`,
+    `His office hours were incredibly helpful, and probably would not have finished many of the homeworks
+without his guidance and patience. Also, his review sessions were always very organized and he went above
+and beyond to be available and helpful in every way.`,
+    `He went the extra mile and created a lot of helpful hints and extra handouts for us which were really helpful.`,
+    `Matt’s helpful hints definitely saved me this semester. He’s an excellent teacher, with a knack for breaking
+down complex concepts in ways that make them easy to comprehend. I hope that when Blitzstein retires,
+Matt DiSorbo will come back to teach Stat 110. I would re-enroll in college to take it again with him.`,
+    `Matt was awesome. His sections always ran smoothly and he tried to connect the material to stuff going on
+outside of class. He was also super helpful at office hours and would almost always stay late or offer extra
+time later in the week if you hadn’t finished the homework, making sure you had the resources needed to
+get it done.`,
+    `He was the best section leader and was very helpful and available! Very encouraging and had a really
+polished, refined, confident teaching style.`,
+    `Matt is clearly passionate about statistics and especially Stat 110. His silly statistics jokes at the beginning
+of every section, pithy quotes about statistics, and tendency to hold informal additional office hours/stick
+around after his have ended all illustrate an unparalleled level of commitment to the course. Sections were
+awesome and office hours were great. Glad to have learned from Matt this semester.`,
+    `Amazing teacher. Mixes just the right amount of lecture with questions to keep me actively paying attention. Presents key material in logical and sometimes humorous manner. The class became so much more
+manageable after I attended his sections and office hours.`,
+    `So helpful, even posted late night before the final with a super helpful studying approach.`,
+    `Fantastic review sessions and command of the material. Well done.`,
+    `He’s enthusiastic and wants to help and is clearly very clever but sometimes that’s too clever for our understanding and just goes off what the vocal people, who are the people who understand, ’s answers and
+responses. But overall, good preparation for class and good examples that both review material and practices
+answering problems but would be nice not to constantly rush through material and be able to absorb more
+information and concepts and give us time as to how we would tackle it before giving us the answer`,
+    `Matts section materials are amazing, particularly the helpful hints. Though beware that some of his practice
+problems have some errors. He is also an excellent teacher and clearly outs so much effort j to his section
+preparation.`,
+    `Matt was a critical addition to this course and left behind a really powerful legacy. I hope someone will come
+into this course with the same enthusiasm and care that he committed. When I started going to his sections,
+the material was 100% illuminated. He clearly cared about our success, and I appreciated everything he did
+to help us.`,
+    `I thought Matt’s class-wide review sessions were fantastic. I would’ve loved weekly or biweekly class-wide
+review sessions like this.`,
+    `Matt was very warm and helpful.`,
+    `Matt DiSorbo is among the best TAs I’ve ever had in any class.`,
+    `Matt was a great TF, his sections were very helpful in mastering the week’s material`,
+    `matt rules`,
+    `Matt is a savior in the course. He’s an experienced TF and really cares about statistics. His sections, paired
+with lectures, are eyeopening.`,
+    `The MVP of the teaching staff.`,
+    `Matt’s review lectures (before the midterm and final) were so, so helpful. I wish I’d gone to his section or
+OH or something. The way he presented material was just so intuitive and easy to follow, it was fantastic.
+Really great stuff.`,
+    `Matt is an excellent TF who is clearly devoted to the course. He takes the initiative in providing additional
+course materials, hosting extra office hours, and communicating the relevance of statistics as a discipline.
+During section, he effectively reviews the core concepts covered in class and works through helpful examples.
+He is also very responsive via email and never fails to thoroughly explain an idea or provide a helpful problem
+solving hint.`,
+    `Matt’s sections were out of this world. He masters the material and knows how to explain it well. the Helpful
+Hints online were also very useful for studying.`,
+    `Matt was an amazing section leader and made my stat110 experience so much better. Please give him a
+bonus`,
+    `One of the best and most professional TFs I’ve ever had, hands down, which is incredible given that he’s an
+undergrad.`,
+    `When TFs just explain answers to me, I have an unfortunate tendency to just kind of zone out. I really
+appreciated your rapid-fire question style of helping, since it forced me to pay attention and made me feel
+like I got there on my own.`,
+    `There is a reason Matt’s office hours and sections are PACKED. He’s the man – so genuinely interested in
+the material and extremely effective at teaching it. Go Matt!`,
+    `Fantastic TF. Only found his section in the last 2 weeks but it was a god send.`,
+    `Matt is the best TF I’ve ever seen for any class. His enthusiasm for Stat 110 was unparalleled. I always
+made sure to attend his office hours, because they were incredibly helpful and he helped me to understand
+the subject matter in a way I couldn’t from lecture. His review materials posted online also saved me many
+times.`,
+    `Far and away the best TF.`,
+    `I really appreciated the amount of time that Matt put into Stat 110 as the unofficial head TF. I found the
+helpful hints and final review session to be enormously beneficial. One tip, though: Matt, if you’re going to
+constantly repeat the quote about conditioning being the soul of statistics, make sure that you use the right
+version of “its.” Other than that, you’re golden.`,
+    `Literally the best TF I’ve ever had. Matt’s sections were such a source of clarity in this course. If every
+course had a TF like him, we’d all be much better off.`,
+    `Matt was a stellar TF. Of the various sections and office hours I attended, his were the most informative and
+interesting. His occasional statistics jokes and clear love of the material made it easier to digest. In addition,
+he offered a wide variety of practice materials on the website, and the helpful hints were very useful.`,
+    `Matt’s helpful hints saved me! I thought I would never catch up on the material to be able to do well on
+the final but Matt’s materials break the concepts down and make them easy to understand. I felt like I had
+a strong foundation on which to do practice problems after just reading the helpful hints. Matt’s sections
+were also my favorite.`,
+    `Killer review session videos. There really is no substitute for a live performance.`,
+    `This guy was great. It cracked me up that he always wrote that silly quote on the board before section.
+His sections had a good balance of review and practice. He always held extra OH (though I never went,
+appreciated that he held them). His helpful hints were really great for review before the final.`,
+    `best section leader at Harvard`,
+    `I don’t know how or why Matt did for Stat 110 what he did, but he was remarkable. (Unsure how he had
+time to do anything else.) His sections were incredibly clear. His notes were a life-saver. His office hours
+were always well attended. I’m sure lots of students have Matt to thank for making it through this class.
+For me, it certainly made the class more enjoyable and digestible.`,
+    `Honestly phenomenal TF. Put so much work in and explained everything so well. He’s so smart and dedicated
+to helping students. One of the best TFs I’ve ever had, he personally improved my experience with the class
+just by explaining the material so well and being so accessible`,
+    `Without a doubt the best section leader I have ever had. His instruction was what helped me understand
+difficult concepts and his materials are incredibly impressive. He’s incredibly personable and accessible and
+phenomenal overall`,
+    `Fantastic sections and review sessions for exams.`,
+    `So generous and energetic. Best TF at harvard.`,
+    `Matt had a great conceptual understanding of the course, and always did a great job at explaining things
+to people at office hours instead of just pointing at the answer. He really made the material clear and was
+an incredibly helpful and accessible resource.`,
+    `His supplementary materials are incredible and should be used in lieu of the lecture slides to teach material
+to everyone both in 110 and 111. He’s the reason I’ve been much more comfortable with the material. Very
+good job in section of teaching the material and answering questions. Also, very helpful at office hours.`,
+    `Matt is the best TF I’ve ever had. Period. He works incredibly hard to do the homeworks before students,
+hold useful sections, and make material seem understandable. He is also fun to talk to and approachable. I
+really look up to Matt as a TF and as a student. He represents some of the best that Harvard has to offer.`,
+    `Matt is an incredible TF who helped bolster my understanding of the material, despite Rader’s ineffective
+lectures. He taught the intuition behind the tools we learned, and he was effective in helping the section navigate each concept. The practice problems he chose were robust, and he was always available in OH or by
+email to provide helpful answers to burning questions. He also seemed genuinely excited about the material,
+which was invigorating as a student.`,
+    `Matt has been my TF for three stat classes now, and has consistently been a highlight for my statistics
+education. He puts in extra effort for his students and teaches material more effectively that professors
+often, in my opinion.`,
+    `Always friendly and helpful during office hours and via email!`,
+    `Great section!`,
+    `Matt is the best TF I’ve ever had. Super nice and humble guy, despite having a deep understanding of the
+material and being generally well-respected by everyone. He’s pretty much the reason I learned anything in
+this class and decided to stick it through. Would love to have him as a TF for any and all future stat classes.`,
+    `great office hours! very helpful!`,
+    `Matt is BAE - before anyone else in helping people understand this course. Helpful Hints were amazing,
+section was encouraging, grading was good. I love Matt.`,
+    `Matt was great!! He always came to section prepared and I found his helpful hints documents very nice.
+Thanks Matt!`,
+    `MATT’S STAT111 NOTES SAVED ME. HE IS A STAT GOD. THANK YOU SO MUCH.`,
+    `Matt is not very helpful`,
+    `THE BEST SECTION TEACHER EVERRRRR!`,
+    `Matt’s OH are great! He really understands the material and explains things well.`,
+    `Matt is an excellent TF. He explained concepts clearly and clarified topics that weren’t clear in lecture.`,
+    `MY HERO. This man saved my grade and career in statistics, so incredibly helpful and makes his own notes
+for the course that honestly should be used by the professor as the standard. Disorbo for President.`,
+    `Matt clearly puts a lot of effort and time into his job. He provides very helpful hints and section handouts
+that walk through the material clearly.`,
+    `Great and always willing to help!`,
+    `He was a great teacher and really helped us get through this class`,
+    `Best TF!`,
+    `Great TF all around! Committed, enthusiastic, pedagogical, approachable, patient and most helpful.`,
+    `Matt is truly INCREDIBLE!!!!!!! Honestly so helpful, made things super clear to understand, and always
+accessible outside of class by email. One of the best teachers I have had at Harvard - also provides comic
+relief with his jokes during section at stressful times.`,
+    `Matt was by far the clearest and most enthusiastic TF in STAT 110. Even though all of his sections were full,
+he allowed us to ask questions if confused and always had good, intuitive responses. His section handouts
+walked us through basic examples and emphasized fundamentals from lecture. The review sessions he ran
+with another TF were also helpful for both the midterm and lecture for understanding concepts such as the
+universality of the uniform and Markov Chains.`,
+    `Matt is an absolute stud. This guy could teach the class. He has been the single most effective section leader
+for a class I’ve ever taken at Harvard, and I am so so happy I discovered his section because I actually learn
+the material whenever I show up.`,
+    `Matt is an incredible section leader. He is so devoted–making extra time during office hours and afterwards,
+making sure students get the material and concepts. He’s also the only section leaders I’ve seen decently
+explain difficult material in a lecture/review setting. He’s extremely knowledgeable and approachabl`,
+    `Matt DiSorbo is a great section leader whose presentations and handouts are incredibly effective and helpful
+in learning this complicated material.`,
+    `By far the best section leader of all the four or five sections I tried - really encouraging, clear, and prepared.`,
+    `I got to go to one of Matt’s sections and his explanations were extremely clear. His section notes (the long
+ones where he explains the material) were often very helpful to me when I was struggling with the material.
+Moreover, I think he is one of the only TFs to ever hold impromptu office hours and often the night just
+before the pset is due, which was very helpful to me.`,
+    `Matt did a great job in the review sessions!`,
+    `Amazing TF! Always willing to help students. Very prepared during office hours`,
+    `Matt is incredible. His “helpful hints” should be saved and posted on the course website next year. He
+essentially wrote an easyto- understand essay about the concepts covered in each topic. These range from
+10-15 pages. Every week! Such an incredible display of dedication. His sections were fun and informative. He
+covered a number of problems each week allowing the students to solve them and answer related questions.
+Someone should buy this man a car.`,
+    `Matt was wonderful, everyone’s favorite TF. He was super helpful and approachable, made people feel good
+instead of stupid about asking questions, had a solid grasp of the material, gave great advice, held great
+sections, etc.`,
+    `Matt’s section was very helpful for understanding difficult concepts, and his additional section materials
+(“helpful hints”) were helpful as well. The effort he spent in preparing materials for section was evident,
+and he often went above and beyond his required time for office hours by spontaneously holding additional
+office hours. Great work.`,
+    `Glorious. If Matt’s a TF you have to go to him.`,
+    `Legitimately the most effective and enthusiastic teaching fellow I have ever experienced at Harvard. Funny,
+helpful, and dedicated, Matt is one of those people whose sheer quality will outshine the overall memory of
+the class. Any class with Matt as a TF is a safe choice for me.`,
+    `Matt was the best TF for me. He responded to my emails and FB at random times within minutes (almost
+always), he led fantastically helpful sections, his office hours were always the most productive for me, and
+he just made me feel better about the course and material overall. He’s an incredible teacher and I hope he
+chooses to keep doing it because he’s got a gift.`,
+    `The best TF I encountered in this course- he cares about his students, is very helpful and explains concepts
+very clearly`,
+    `Matt was a great TF in terms of preparation for section, and being available to meet outside of class. I, and
+other fellow students, found his “Helpful Hints” very helpful (obvi), and he’s very friendly and chill. Matt is
+one of the best Stat(t)110 TFs so definitely go to his section!`,
+    `Matt is hands down the best TF I’ve ever had. He’s incredibly dedicated to Stat 110 and really deserves to
+be Head TF. He has really long and detailed section notes and his OH were the primary reason i loved this
+course. He’s incredibly passionate and really very nice.`,
+    `Matt’s a great TF and always helpful at office hours. He was consistently able to elucidate the topics I
+was struggling with and lead me to the answer without showing it to me. Matt also responded quickly to
+questions outside of office hours and section. 10/10!`,
+    `Smart guy and he made sure to show us how excited he was about this stuff. Worth going to section, because
+he was quite helpful`,
+    `Matt was always very accessible. He made section enjoyable and easy to follow and mae the material very
+interesting.`,
+    `Matt sends the best emails in the game. He obviously know what he’s talking about and gives great hints
+and explanations in a way that is very down to earth and makes me less stressed out.`,
+    `Matthew Disorbo understands the materials well. he provides us with packets that clarify concepts in lecture.
+In addition, he challenges the students with difficult questions to reinforce the material.`,
+    `Matt is an awesome dude, and clearly loves teaching statistics. Love seeing his emails in my inbox because it
+means 1) his version of helpful hints and 2) cool gifs. I’m impressed that a fellow student at the college put
+enough time in to compile very detailed, well thought out, and clear helpful hints to send out to his section
+- it really shows his dedication. I basically relied on Matt to teach me all of Stat and did pretty well in the
+class as a result.`,
+    `One of the best TFs I’ve ever had. Understand the material so well and can teach it even better.`,
+    `Fantastic! But an incredible amount of time and effort into his teaching. Was very encouraging and supportive. Very concise in section, quick in responding to emails, and willing to set up extra office hours to
+accommodate our schedules. One of the best TF’s I have had here at Harvard.`,
+    `Matt was always ready to help, both in office hours and over email. He is clearly an experienced TF and
+teaches at a really high quality. His helpfulness was much appreciated, up to the day before the final exam.
+Matt was consistently a helpful TF throughout the semester. A really, really great TF.`,
+    `Absolutely phenomenal. He always went above and beyond in section. He even created his own handouts
+and “helpful hints” to guide us in our studies, He was always willing to help and he always brought candy to
+class. I could not have asked for a better TF. I learned more than I would have had I just gone to lecture.
+Simply, put Matt is THE role model TF for all TFs.`,
+    `I had a bad TF who seemed very unsure of what she was talking about. I switched to Matt’s section and
+was blown away by his preparation and knowledge of the material. He formulates detailed lesson plans, uses
+diagrams, and answers questions effectively.`,
+    `Matt was a fantastic TF. His enthusiasm almost made me want to switch my concentration to statistics. He
+understands the course exactly for what it is and always let’s us know what to do if we want to explore and
+think bigger.`,
+    `Great TF, amazing cheerleader for us before each exam.`,
+    `Matt was a very helpful TA. While I did not go to section or office hours often, when I did he was very
+helpful.`,
+    `Matt is the best TF I’ve had yet. He covers the material thoroughly (providing useful examples along the
+way), regularly sends self-written “helpful hints” to assist students with understanding the material, and
+keeps in constant email communication with students.`,
+    `DiSorbo is great. He is the reason I did well in the class. I think he is a huge asset to the Statistics
+department.`,
+    `Best TF I’ve had at Harvard so far. He nails everything down. Hands down best TF ever. Also his sections
+scored better than the head TF’s.`,
+    `not even my TF, but a such a help during office hours! Most helpful TF by far. Thanks!`,
+    `unreal dude, unreal teacher.`,
+    `Great job. I could tell he cared from the material he sent my section, and he was very good at helping me
+understand problems. Also very willing to hold auxiliary office hours and he knew what we needed to know.
+I felt he was invested in seeing us do well.`,
+    `Matt is a LEGENDARY TF. He is a great teacher and very accessible. I felt like most of the learning I
+accomplished for this course occurred in section because of Matt’s straightforward and interactive lecturing.
+I’m really glad I got the chance to be in his section this semester. I think he has a great career in teaching
+ahead of him, if he chooses that. If he chooses some other career path, I’m sure he’ll do wonderfully in that,
+too.`,
+    `Matt is very personable and understands the material very well. He also always sends out notes that help a
+lot with homework and understanding the material. I really appreciated his dedication to the class.`,
+    `He’s great.`,
+    `Matt got better and better over the course of the semester!! Was so friendly, so accessible. Gave us so many
+helpful study materials. Helped to synthesize the week’s material and teach us the parts that mattered most.
+Matt you were absolutely great! Thank you so much!`,
+    `The most dedicated TF I have ever had. The review and project guides you sent us were incredibly helpful.
+I wish you could be giving the lectures for this course.You’re just as good at explaining things as the prof
+and more focused.`,
+    `REALLY great TF, he went above and beyond will making sure we understood the materials.`,
+    `Matt was an exceptional TF. He was my assigned TF and I could not be more happy that I went to his
+sections. He was clear and gave examples outside of what we learned in class to reiterate the material and
+ensure we understood the material. He fostered an informal environment where we could ask questions,
+while simultaneously ensuring that we were productive and got through his lesson. Most of all, he made
+himself available for extra office hours and individual meetings if we needed any support. If only we had
+more TFs like Matt!`,
+    `Matt is awesome. He’s really helpful, did great teaching in section, and is just a wonderful person. (I should
+note that I also appreciated the emails he would send right before exams with cute animals and youtube
+videos on them).`,
+    `Matt was great. He was super encouraging and helpful. He sent us his own exam guides, gave helpful hints
+for the project, and was super responsive to emails. He sent us motivational emails and videos on test days,
+and I truly felt like he was an encouraging source of support during what I consider was one of the hardest
+classes I have taken at Harvard so far.`,
+    `He was so awesome!! Everyone was jealous because I had the best TF who gave us extra study guides and
+was always available to help us.`,
+    `Matt is the absolute best. He is really enthusiastic about statistics and went above and beyond my expectations. He made study guides for us and even took the extra time to teach our section cool the Monty Hall
+problem and other concepts from Stat110. He was always available when I needed him. I have nothing but
+good to say about Matt.`,
+    `Matt was the best–so accessible, supportive, and dedicated to giving us the best Stat 104 experience possible.
+He was very effective and helpful, and a real asset to the Stat 104 teaching team!`,
+    `Matt was a great section leader. He was really great at explaining a lot of the topics and providing supplemental readings and course material to help us complete problem sets and study for exams.`,
+    `Matt went 110% in TFing this class. Really impressive effort and commitment to serving his students. Well
+done.`
   ];
 
   // Function to show 5 random quotes
