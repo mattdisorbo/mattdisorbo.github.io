@@ -495,7 +495,7 @@ done.`
     container.innerHTML = ""; // clear existing quotes
 
     // Shuffle and take 5
-    const shuffled = allQuotes2.sort(() => 0.5 - Math.random());
+    const shuffled = allQuotes.sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, 5);
 
     // Add to DOM
@@ -529,7 +529,7 @@ done.`
     container.innerHTML = ""; // clear existing quotes
 
     // Shuffle and take 3
-    const shuffled = allQuotes.sort(() => 0.5 - Math.random());
+    const shuffled = allQuotes2.sort(() => 0.5 - Math.random());
     const selected = shuffled.slice(0, 3);
 
     // Add to DOM
