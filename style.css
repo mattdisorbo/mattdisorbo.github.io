@@ -7,7 +7,7 @@ body {
 }
 
 .container {
-  max-width: 900px; /* was 700px originally */
+  max-width: 1000px; /* was 700px originally */
   margin: auto;
   text-align: center;
 }
