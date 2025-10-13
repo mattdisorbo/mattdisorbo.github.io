@@ -10,6 +10,14 @@ body {
   max-width: 1000px; /* was 700px originally */
   margin: auto;
   text-align: center;
+  /* styling */
+  border: 2px solid #a41034;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
 }
 
 .profile-pic {
@@ -59,12 +67,4 @@ section {
   color: #0072b1; /* LinkedIn blue for hover, or customize */
 }
 
-#quotes-container {
-  border: 2px solid #a41034;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
-}
+
