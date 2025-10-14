@@ -104,3 +104,9 @@ section {
 .social-icons a:hover {
   color: #000;             /* black hover */
 }
+
+/* extra buffer between research and teaching */
+#research {
+  margin-bottom: 5rem;
+}
+
