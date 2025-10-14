@@ -23,6 +23,17 @@ body {
   transition: all 0.2s ease;
 }
 
+#new-quotes-btn2 {
+  border: 2px solid #a41034; /* Harvard crimson-style border */
+  border-radius: 8px;
+  background-color: #fff;
+  color: #a41034;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
 #new-quotes-btn:hover {
   background-color: #a41034;
   color: #fff;
