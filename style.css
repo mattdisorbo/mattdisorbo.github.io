@@ -23,7 +23,7 @@ body {
 
 /* === Headings === */
 h1, h2, h3 {
-  color: #a41034;          /* crimson accent */
+  color: #000;             /* black headings */
 }
 
 /* === Navigation === */
@@ -34,7 +34,7 @@ nav {
 nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #a41034;          /* crimson */
+  color: #000;             /* black links */
   font-weight: bold;
 }
 
@@ -53,10 +53,10 @@ section {
 /* === Buttons (reviews) === */
 #new-quotes-btn,
 #new-quotes-btn2 {
-  border: 2px solid #a41034;
+  border: 2px solid #000;  /* black border */
   border-radius: 8px;
   background-color: #fff;
-  color: #a41034;
+  color: #000;
   font-weight: bold;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
@@ -66,7 +66,7 @@ section {
 
 #new-quotes-btn:hover,
 #new-quotes-btn2:hover {
-  background-color: #a41034;
+  background-color: #000;
   color: #fff;
 }
 
@@ -83,7 +83,7 @@ section {
 
 #quotes-container blockquote,
 #quotes-container2 blockquote {
-  border-left: 3px solid #a41034;  /* crimson accent line */
+  border-left: 3px solid #000;     /* black accent line */
   padding-left: 1rem;
   margin: 1rem 0;
   color: #222831;
@@ -102,5 +102,5 @@ section {
 }
 
 .social-icons a:hover {
-  color: #a41034;          /* crimson hover */
+  color: #000;             /* black hover */
 }
