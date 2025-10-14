@@ -12,6 +12,27 @@ body {
   text-align: center;
 }
 
+/* Box around the random review quotes */
+#quotes-container {
+  border: 1.5px solid #ccc;       /* light gray border */
+  border-radius: 10px;            /* rounded corners */
+  padding: 1.5rem;                /* spacing inside the box */
+  margin-top: 1rem;               /* space above */
+  background-color: #fafafa;      /* slightly off-white background */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* soft subtle shadow */
+  max-width: 900px;               /* optional: keep it aligned with text width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Make each quote separated and readable */
+#quotes-container blockquote {
+  margin: 1rem 0;
+  padding-left: 1rem;
+  border-left: 3px solid #a41034; /* crimson line for accent */
+  color: #444;
+}
+
 #new-quotes-btn {
   border: 2px solid #a41034; /* Harvard crimson-style border */
   border-radius: 8px;
