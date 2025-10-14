@@ -1,15 +1,15 @@
 /* === Global Styles === */
 body {
   font-family: Georgia, serif;
-  background: #f9f9fb;    /* neutral background */
-  color: #111827;         /* near-black text */
+  background: #f4f6f8;     /* soft gray-blue */
+  color: #222831;          /* dark slate text */
   padding: 2rem;
   line-height: 1.6;
 }
 
 /* === Container === */
 .container {
-  max-width: 700px;       /* adjust if you want narrower or wider */
+  max-width: 700px;
   margin: auto;
   text-align: center;
 }
@@ -23,7 +23,7 @@ body {
 
 /* === Headings === */
 h1, h2, h3 {
-  color: #4338ca;         /* indigo accent */
+  color: #a41034;          /* crimson accent */
 }
 
 /* === Navigation === */
@@ -34,12 +34,12 @@ nav {
 nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #4338ca;         /* indigo */
+  color: #a41034;          /* crimson */
   font-weight: bold;
 }
 
 nav a:hover {
-  color: #64748b;         /* slate gray hover */
+  color: #375a7f;          /* steel blue hover */
   text-decoration: underline;
 }
 
@@ -47,16 +47,16 @@ nav a:hover {
 section {
   text-align: left;
   margin-top: 2rem;
-  color: #111827;
+  color: #222831;
 }
 
 /* === Buttons (reviews) === */
 #new-quotes-btn,
 #new-quotes-btn2 {
-  border: 2px solid #4338ca;
+  border: 2px solid #a41034;
   border-radius: 8px;
   background-color: #fff;
-  color: #4338ca;
+  color: #a41034;
   font-weight: bold;
   padding: 0.6rem 1.2rem;
   cursor: pointer;
@@ -66,27 +66,27 @@ section {
 
 #new-quotes-btn:hover,
 #new-quotes-btn2:hover {
-  background-color: #4338ca;
+  background-color: #a41034;
   color: #fff;
 }
 
 /* === Quote boxes === */
 #quotes-container,
 #quotes-container2 {
-  border: 2px solid #4338ca;
+  border: 2px solid #375a7f;       /* steel blue border */
   border-radius: 10px;
   padding: 1.5rem;
   margin-top: 1rem;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 #quotes-container blockquote,
 #quotes-container2 blockquote {
-  border-left: 3px solid #4338ca;
+  border-left: 3px solid #a41034;  /* crimson accent line */
   padding-left: 1rem;
   margin: 1rem 0;
-  color: #111827;
+  color: #222831;
 }
 
 /* === Social icons === */
@@ -97,10 +97,10 @@ section {
 
 .social-icons a {
   margin: 0 10px;
-  color: #64748b;
+  color: #375a7f;          /* steel blue icons */
   text-decoration: none;
 }
 
 .social-icons a:hover {
-  color: #4338ca;
+  color: #a41034;          /* crimson hover */
 }
