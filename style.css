@@ -1,55 +1,32 @@
+/* === Global Styles === */
 body {
   font-family: Georgia, serif;
-  background: #fdfdfd;
-  color: #222;
+  background: #f9f9fb;    /* neutral background */
+  color: #111827;         /* near-black text */
   padding: 2rem;
   line-height: 1.6;
 }
 
+/* === Container === */
 .container {
-  max-width: 700px; /* was 700px originally */
+  max-width: 700px;       /* adjust if you want narrower or wider */
   margin: auto;
   text-align: center;
 }
 
-#new-quotes-btn {
-  border: 2px solid #a41034; /* Harvard crimson-style border */
-  border-radius: 8px;
-  background-color: #fff;
-  color: #a41034;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#new-quotes-btn2 {
-  border: 2px solid #a41034; /* Harvard crimson-style border */
-  border-radius: 8px;
-  background-color: #fff;
-  color: #a41034;
-  font-weight: bold;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-#new-quotes-btn:hover {
-  background-color: #a41034;
-  color: #fff;
-}
-
+/* === Profile picture === */
 .profile-pic {
   width: 150px;
   border-radius: 50%;
   margin-bottom: 1rem;
 }
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 0.2rem;
+/* === Headings === */
+h1, h2, h3 {
+  color: #4338ca;         /* indigo accent */
 }
 
+/* === Navigation === */
 nav {
   margin: 1.5rem 0;
 }
@@ -57,20 +34,62 @@ nav {
 nav a {
   margin: 0 1rem;
   text-decoration: none;
-  color: #a41034;
+  color: #4338ca;         /* indigo */
   font-weight: bold;
 }
 
 nav a:hover {
+  color: #64748b;         /* slate gray hover */
   text-decoration: underline;
 }
 
+/* === Sections === */
 section {
   text-align: left;
   margin-top: 2rem;
+  color: #111827;
 }
 
+/* === Buttons (reviews) === */
+#new-quotes-btn,
+#new-quotes-btn2 {
+  border: 2px solid #4338ca;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #4338ca;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.8rem;
+}
 
+#new-quotes-btn:hover,
+#new-quotes-btn2:hover {
+  background-color: #4338ca;
+  color: #fff;
+}
+
+/* === Quote boxes === */
+#quotes-container,
+#quotes-container2 {
+  border: 2px solid #4338ca;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#quotes-container blockquote,
+#quotes-container2 blockquote {
+  border-left: 3px solid #4338ca;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #111827;
+}
+
+/* === Social icons === */
 .social-icons {
   margin-top: 10px;
   text-align: center;
@@ -78,32 +97,10 @@ section {
 
 .social-icons a {
   margin: 0 10px;
-  color: #333; /* or your preferred color */
+  color: #64748b;
   text-decoration: none;
 }
 
 .social-icons a:hover {
-  color: #0072b1; /* LinkedIn blue for hover, or customize */
-}
-
-
-
-/* === Quote Boxes === */
-#quotes-container,
-#quotes-container2 {
-  border: 2px solid #000;       /* Crimson border */
-  border-radius: 10px;             /* Rounded corners */
-  padding: 1.5rem;                 /* Space inside */
-  margin-top: 1rem;                /* Space above */
-  background-color: #fff;          /* Clean white background */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-/* Style for each quote inside the box */
-#quotes-container blockquote,
-#quotes-container2 blockquote {
-  border-left: 3px solid #000;  /* Accent bar */
-  padding-left: 1rem;
-  margin: 1rem 0;
-  color: #444;
+  color: #4338ca;
 }
