@@ -10,14 +10,22 @@ body {
   max-width: 1000px; /* was 700px originally */
   margin: auto;
   text-align: center;
-  /* styling */
-  border: 2px solid #a41034;
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
+}
+
+#new-quotes-btn {
+  border: 2px solid #a41034; /* Harvard crimson-style border */
+  border-radius: 8px;
   background-color: #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
+  color: #a41034;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#new-quotes-btn:hover {
+  background-color: #a41034;
+  color: #fff;
 }
 
 .profile-pic {
