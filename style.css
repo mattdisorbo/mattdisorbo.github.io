@@ -91,7 +91,7 @@ section {
 /* === Quote Boxes === */
 #quotes-container,
 #quotes-container2 {
-  border: 2px solid #a41034;       /* Crimson border */
+  border: 2px solid #000;       /* Crimson border */
   border-radius: 10px;             /* Rounded corners */
   padding: 1.5rem;                 /* Space inside */
   margin-top: 1rem;                /* Space above */
@@ -102,7 +102,7 @@ section {
 /* Style for each quote inside the box */
 #quotes-container blockquote,
 #quotes-container2 blockquote {
-  border-left: 3px solid #a41034;  /* Accent bar */
+  border-left: 3px solid #000;  /* Accent bar */
   padding-left: 1rem;
   margin: 1rem 0;
   color: #444;
