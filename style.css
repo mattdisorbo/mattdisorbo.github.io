@@ -119,3 +119,27 @@ section {
 #research {
   margin-bottom: 5rem;
 }
+
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 12px 0 20px;
+}
+.social-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  background: #555;
+  transition: background 0.2s, transform 0.2s;
+}
+.social-buttons a:hover {
+  background: #222;
+  transform: translateY(-2px);
+}
