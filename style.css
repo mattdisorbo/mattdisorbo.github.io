@@ -145,6 +145,6 @@ section {
 }
 
 
-.social-buttons a {
-  font-size: 0.5rem; /* change to taste—try 0.875rem, 1.25rem, etc. */
+.social-buttons a i {
+  font-size: 1rem !important;
 }
