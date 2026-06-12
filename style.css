@@ -130,13 +130,11 @@ section {
   margin: 12px 0 20px;
 }
 .social-buttons a {
-  width: 25px;
-  height: 25px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
   border-radius: 50%;
   font-size: 20px;
   color: #fff;
