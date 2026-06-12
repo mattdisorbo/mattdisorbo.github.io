@@ -140,10 +140,10 @@ section {
   transition: background 0.2s, transform 0.2s;
 }
 .social-buttons a {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.4rem;
-  /* keep your existing background, border-radius, etc. */
+  width: 1.5rem !important;
+  height: 1.5rem !important;
+  min-width: 0 !important;
+  padding: 0.25rem !important;
 }
 .social-buttons a i {
   font-size: 1rem;
