@@ -171,3 +171,16 @@ section {
   color: #000;
   text-decoration: underline;
 }
+
+
+
+.profile-pic {
+  margin-top: 2.5em;   /* more space below the banner */
+  margin-bottom: 0.5em; /* less space before your name */
+}
+.container h1 {
+  margin-bottom: 0.25em; /* less space before the icons */
+}
+.social-buttons {
+  margin-top: 0; /* tighten gap above icons if needed */
+}
