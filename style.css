@@ -171,6 +171,11 @@ section {
   color: #000;
   text-decoration: underline;
 }
-
+.banner-nav a.active {
+  background: #555;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.15em 0.5em;
+}
 
 
