@@ -141,20 +141,12 @@ section {
   background: #555;
   transition: background 0.2s, transform 0.2s;
 }
-.social-buttons a {
-  width: 1.5rem !important;
-  height: 1.5rem !important;
-  min-width: 0 !important;
-  padding: 0.25rem !important;
+.social-buttons a:hover {
+  background: #222;
+  transform: translateY(-2px);
 }
 .social-buttons a i {
   font-size: 1rem;
-  margin-top: 1.5em;
-}
-.social-buttons a {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
 }
 
 
