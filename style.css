@@ -149,7 +149,7 @@ section {
 }
 .social-buttons a i {
   font-size: 1rem;
-  margin-top: 0; /* tighten gap above icons if needed */
+  margin-top: 1.5em;
 }
 
 
