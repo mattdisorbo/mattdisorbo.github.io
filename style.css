@@ -148,6 +148,10 @@ section {
 .social-buttons a i {
   font-size: 0.85rem;
 }
+.social-buttons {
+  margin-top: 24px;
+  transform: translateY(12px);
+}
 
 
 .site-banner {
