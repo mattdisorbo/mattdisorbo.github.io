@@ -12,13 +12,15 @@ body {
   max-width: 700px;
   margin: auto;
   text-align: center;
+  margin-bottom: 0.25em; /* less space before the icons */
 }
 
 /* === Profile picture === */
 .profile-pic {
   width: 150px;
   border-radius: 50%;
-  margin-bottom: 1rem;
+  margin-top: 2.5em;   /* more space below the banner */
+  margin-bottom: 0.5em; /* less space before your name */
 }
 
 /* === Headings === */
@@ -147,6 +149,7 @@ section {
 }
 .social-buttons a i {
   font-size: 1rem;
+  margin-top: 0; /* tighten gap above icons if needed */
 }
 
 
@@ -173,14 +176,3 @@ section {
 }
 
 
-
-.profile-pic {
-  margin-top: 2.5em;   /* more space below the banner */
-  margin-bottom: 0.5em; /* less space before your name */
-}
-.container h1 {
-  margin-bottom: 0.25em; /* less space before the icons */
-}
-.social-buttons {
-  margin-top: 0; /* tighten gap above icons if needed */
-}
