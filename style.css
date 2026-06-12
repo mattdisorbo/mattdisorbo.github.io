@@ -151,6 +151,11 @@ section {
   font-size: 1rem;
   margin-top: 1.5em;
 }
+.social-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 .site-banner {
@@ -174,5 +179,6 @@ section {
   color: #000;
   text-decoration: underline;
 }
+
 
 
