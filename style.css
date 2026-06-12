@@ -139,12 +139,12 @@ section {
   background: #555;
   transition: background 0.2s, transform 0.2s;
 }
-.social-buttons a:hover {
-  background: #222;
-  transform: translateY(-2px);
+.social-buttons a {
+  width: 2rem;
+  height: 2rem;
+  padding: 0.4rem;
+  /* keep your existing background, border-radius, etc. */
 }
-
-
 .social-buttons a i {
-  font-size: 1rem !important;
+  font-size: 1rem;
 }
