@@ -14,15 +14,20 @@ jobs:
         with:
           node-version: 20
       - run: node scripts/update-books.mjs
-     - name: Commit changes
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           if git diff --quiet; then
             echo "No changes to commit."
-          else
-            git add interests.html
-            git commit -m "Update Goodreads reviews"
-            git pull --rebase origin main
-            git push
+            exit 0
           fi
+          git add interests.html
+          git commit -m "Update Goodreads reviews"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            echo "Push attempt $i failed, retrying..."
+            sleep 5
+          done
+          echo "Push failed after retries."
+          exit 1
