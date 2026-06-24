@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interests — Matt DiSorbo</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    .chess-wrap { max-width: 720px; margin: 0 auto; }
+    .chess-layout { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
+    .board-col { flex: 0 0 auto; }
+    .board {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      width: min(82vw, 400px); aspect-ratio: 1 / 1;
+      border: 2px solid #333; box-sizing: content-box;
+    }
+    .sq { display: flex; align-items: center; justify-content: center;
+      font-size: clamp(22px, 8vw, 40px); line-height: 1; position: relative;
+      user-select: none; }
+    .sq.light { background: #ebecd0; }
+    .sq.dark  { background: #779556; }
+    .sq.hl::after { content: ""; position: absolute; inset: 0;
+      background: rgba(255, 235, 59, 0.45); pointer-events: none; }
+    .piece.w { color: #fff; text-shadow: 0 0 2px #000, 0 0 1px #000; }
+    .piece.b { color: #111; }
+    .piece { position: relative; z-index: 1; }
+    .coord { position: absolute; font-size: 10px; font-weight: 600; opacity: .6; z-index: 2; }
+    .coord.file { right: 2px; bottom: 1px; }
+    .coord.rank { left: 2px; top: 1px; }
+    .controls { display: flex; gap: 6px; margin: 12px 0; }
+    .controls button {
+      flex: 1; padding: 8px 0; font-size: 16px; cursor: pointer;
+      border: 1px solid #ccc; background: #f7f7f7; border-radius: 6px;
+    }
+    .controls button:hover { background: #ececec; }
+    .side-col { flex: 1 1 240px; min-width: 220px; }
+    .annotation { min-height: 60px; padding: 12px 14px; background: #f7f7f4;
+      border-left: 3px solid #779556; border-radius: 4px; font-size: 15px; line-height: 1.5; }
+    .movelist { margin-top: 14px; line-height: 1.9; font-size: 15px; }
+    .movelist .mv { cursor: pointer; padding: 1px 4px; border-radius: 3px; }
+    .movelist .mv:hover { background: #eee; }
+    .movelist .mv.current { background: #779556; color: #fff; }
+    .movelist .num { color: #888; margin-right: 2px; }
+    .game-header { font-size: 14px; color: #555; margin-bottom: 10px; }
+  </style>
+</head>
+<body>
+<header class="site-banner">
+  <nav class="banner-nav">
+    <a href="index.html">Home</a>
+    <a href="research.html">Research</a>
+    <a href="https://mattdisorbo.github.io/CV.pdf" target="_blank">CV</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="interests.html" class="active">Interests</a>
+  </nav>
+</header>
+
+<div class="container">
+  <h1>Interests</h1>
+
+  <section id="chess">
+    <h2>Chess</h2>
+    <p>An annotated game — click through the moves below.</p>
+
+    <div class="chess-wrap">
+      <div class="game-header" id="gameHeader"></div>
+      <div class="chess-layout">
+        <div class="board-col">
+          <div class="board" id="board"></div>
+          <div class="controls">
+            <button id="btnStart" title="Start (Home)">⏮</button>
+            <button id="btnPrev" title="Previous (←)">◀</button>
+            <button id="btnNext" title="Next (→)">▶</button>
+            <button id="btnEnd" title="End">⏭</button>
+            <button id="btnFlip" title="Flip board">⤢</button>
+          </div>
+        </div>
+        <div class="side-col">
+          <div class="annotation" id="annotation"></div>
+          <div class="movelist" id="movelist"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script type="module">
+import { Chess } from "https://cdn.jsdelivr.net/npm/chess.js@1.4.0/+esm";
+
+/* ===================== EDIT YOUR GAME HERE ===================== */
+const GAME = {
+  white: "White Player",
+  black: "Black Player",
+  event: "Example Game",
+  intro: "Replace this with your opening remark. It shows at the starting position.",
+  moves: [
+    { move: "e4",  note: "Standard king's-pawn opening." },
+    { move: "e5",  note: "" },
+    { move: "Nf3", note: "Developing and attacking e5." },
+    { move: "Nc6", note: "Defending the pawn." },
+    { move: "Bb5", note: "The Ruy Lopez." },
+    { move: "a6",  note: "The Morphy Defence." }
+  ]
+};
+/* ============================================================== */
+
+const GLYPH = { p:"♟", n:"♞", b:"♝", r:"♜", q:"♛", k:"♚" };
+const FILES = ["a","b","c","d","e","f","g","h"];
+
+// Build positions + verbose move data via chess.js
+const chess = new Chess();
+const plies = []; // { san, note, fen, from, to }
+let parseError = null;
+for (let i = 0; i < GAME.moves.length; i++) {
+  const m = chess.move(GAME.moves[i].move);
+  if (!m) { parseError = `Illegal/unrecognized move #${i + 1}: "${GAME.moves[i].move}"`; break; }
+  plies.push({ san: m.san, note: GAME.moves[i].note || "", fen: m.after, from: m.from, to: m.to });
+}
+const startFen = new Chess().fen();
+
+let cur = 0;        // 0 = start, k = after k-th ply
+let flipped = false;
+
+const boardEl = document.getElementById("board");
+const annoEl = document.getElementById("annotation");
+const listEl = document.getElementById("movelist");
+
+document.getElementById("gameHeader").textContent =
+  [GAME.event, (GAME.white && GAME.black) ? `${GAME.white} – ${GAME.black}` : ""].filter(Boolean).join(" · ");
+
+function fenAt(i) { return i === 0 ? startFen : plies[i - 1].fen; }
+
+function renderBoard() {
+  const fen = fenAt(cur).split(" ")[0];
+  const rows = fen.split("/"); // rank 8 -> rank 1
+  const hl = cur > 0 ? [plies[cur - 1].from, plies[cur - 1].to] : [];
+  const order = [...Array(8).keys()];
+  const rankOrder = flipped ? [...order].reverse() : order;       // 0..7 = rank 8..1
+  const fileOrder = flipped ? [...order].reverse() : order;       // 0..7 = file a..h
+  boardEl.innerHTML = "";
+  for (const r of rankOrder) {
+    // expand this rank's FEN into 8 cells
+    const cells = [];
+    for (const ch of rows[r]) {
+      if (/\d/.test(ch)) for (let k = 0; k < +ch; k++) cells.push(null);
+      else cells.push(ch);
+    }
+    for (const f of fileOrder) {
+      const sq = document.createElement("div");
+      const fileLetter = FILES[f];
+      const rankNum = 8 - r;
+      const name = fileLetter + rankNum;
+      const isLight = (r + f) % 2 === 0;
+      sq.className = "sq " + (isLight ? "light" : "dark") + (hl.includes(name) ? " hl" : "");
+      const pc = cells[f];
+      if (pc) {
+        const span = document.createElement("span");
+        span.className = "piece " + (pc === pc.toUpperCase() ? "w" : "b");
+        span.textContent = GLYPH[pc.toLowerCase()];
+        sq.appendChild(span);
+      }
+      // edge coordinate labels
+      const lastRankRow = flipped ? 0 : 7;
+      const firstFileCol = flipped ? 7 : 0;
+      if (r === lastRankRow) { const c = document.createElement("span"); c.className = "coord file"; c.textContent = fileLetter; sq.appendChild(c); }
+      if (f === firstFileCol) { const c = document.createElement("span"); c.className = "coord rank"; c.textContent = rankNum; sq.appendChild(c); }
+      boardEl.appendChild(sq);
+    }
+  }
+}
+
+function renderAnnotation() {
+  annoEl.textContent = cur === 0 ? (GAME.intro || "") : (plies[cur - 1].note || "");
+}
+
+function renderList() {
+  listEl.innerHTML = "";
+  for (let i = 0; i < plies.length; i++) {
+    if (i % 2 === 0) {
+      const num = document.createElement("span");
+      num.className = "num";
+      num.textContent = (i / 2 + 1) + ".";
+      listEl.appendChild(num);
+    }
+    const mv = document.createElement("span");
+    mv.className = "mv" + (cur === i + 1 ? " current" : "");
+    mv.textContent = plies[i].san + " ";
+    mv.onclick = () => { cur = i + 1; render(); };
+    listEl.appendChild(mv);
+  }
+}
+
+function render() { renderBoard(); renderAnnotation(); renderList(); }
+
+document.getElementById("btnStart").onclick = () => { cur = 0; render(); };
+document.getElementById("btnPrev").onclick  = () => { if (cur > 0) cur--; render(); };
+document.getElementById("btnNext").onclick  = () => { if (cur < plies.length) cur++; render(); };
+document.getElementById("btnEnd").onclick   = () => { cur = plies.length; render(); };
+document.getElementById("btnFlip").onclick  = () => { flipped = !flipped; render(); };
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft")  { if (cur > 0) cur--; render(); }
+  if (e.key === "ArrowRight") { if (cur < plies.length) cur++; render(); }
+  if (e.key === "Home")       { cur = 0; render(); }
+});
+
+if (parseError) annoEl.textContent = "⚠ " + parseError;
+render();
+</script>
+</body>
+</html>
