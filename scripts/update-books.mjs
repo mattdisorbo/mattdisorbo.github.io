@@ -2,7 +2,7 @@ import { readFile, writeFile } from "node:fs/promises";
 
 const FEED = "https://www.goodreads.com/review/list_rss/117117622?shelf=read&sort=date_added&order=d";
 const FILE = "interests.html";
-const MAX = 3, CHARS = 360;
+const MAX = 5, CHARS = 360;
 const START = "<!-- BOOKS:START -->", END = "<!-- BOOKS:END -->";
 
 const tag = (block, name) => {
