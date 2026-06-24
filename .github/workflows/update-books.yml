@@ -22,7 +22,7 @@ jobs:
             echo "No changes to commit."
             exit 0
           fi
-          git add interests.html
+          git add hobbies.html
           git commit -m "Update Goodreads reviews"
           for i in 1 2 3; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
