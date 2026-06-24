@@ -1,7 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 
 const FEED = "https://www.goodreads.com/review/list_rss/117117622?shelf=read&sort=date_read&order=d";
-const FILE = "interests.html";
+const FILE = "hobbies.html";
 const MAX = 5, CHARS = 360;
 const START = "<!-- BOOKS:START -->", END = "<!-- BOOKS:END -->";
 
