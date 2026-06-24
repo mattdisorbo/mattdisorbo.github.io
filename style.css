@@ -183,3 +183,15 @@ section {
 }
 
 
+
+.books-grid { display: flex; flex-direction: column; gap: 18px; max-width: 720px; margin: 0 auto; }
+    .book-card { display: flex; gap: 16px; align-items: flex-start; }
+    .book-card img { width: 70px; flex: 0 0 auto; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+    .book-info { flex: 1; }
+    .book-title { font-weight: 600; font-size: 15px; }
+    .book-title a { color: #333; text-decoration: none; }
+    .book-title a:hover { text-decoration: underline; }
+    .book-author { font-size: 13px; color: #666; margin-bottom: 4px; }
+    .book-stars { color: #e0a800; font-size: 14px; margin-bottom: 6px; }
+    .book-review { font-size: 14px; line-height: 1.5; color: #333; }
+    .book-review a { color: #779556; }
