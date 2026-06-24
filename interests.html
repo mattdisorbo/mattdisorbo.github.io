@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
-    .chess-wrap { max-width: 720px; margin: 0 auto; }
+    .chess-wrap { max-width: 720px; margin: 0 auto 48px; }
     .chess-layout { display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start; }
     .board-col { flex: 0 0 auto; }
     .board {
@@ -65,39 +65,22 @@
     <h2>Chess</h2>
     <p>I'm an ardent fan of the royal game, although my passion far outstrips my skill. I've annotated some of my favorite personal games below. I'm always up for a new challenge: try me at <code>mdisorbo</code> on <a href="https://www.chess.com">chess.com</a>.</p>
 
-    <div class="chess-wrap">
-      <div class="game-header" id="gameHeader"></div>
-      <div class="chess-layout">
-        <div class="board-col">
-          <div class="board" id="board"></div>
-          <div class="controls">
-            <button id="btnStart" title="Start (Home)">⏮</button>
-            <button id="btnPrev" title="Previous (←)">◀</button>
-            <button id="btnNext" title="Next (→)">▶</button>
-            <button id="btnEnd" title="End">⏭</button>
-            <button id="btnFlip" title="Flip board">⤢</button>
-          </div>
-        </div>
-        <div class="side-col">
-          <div class="annotation" id="annotation"></div>
-          <div class="movelist" id="movelist"></div>
-        </div>
-      </div>
-    </div>
+    <div class="chess-wrap" id="game1"></div>
+    <div class="chess-wrap" id="game2"></div>
   </section>
 </div>
 
 <script type="module">
 import { Chess } from "https://cdn.jsdelivr.net/npm/chess.js@1.4.0/+esm";
 
-/* ===================== EDIT YOUR GAME HERE ===================== */
-const GAME = {
+/* ===================== GAME 1 ===================== */
+const GAME1 = {
   white: "DosSantos DiSorbo",
   black: "Adefolalu",
   event: "2/21/2024",
   intro: "A bishop sacrifice opens up the kingside; an ill-fated king walk ends in enemy camp.",
   moves: [
-{ move: "e4",    note: "" },
+    { move: "e4",    note: "" },
     { move: "d6",    note: "" },
     { move: "d4",    note: "" },
     { move: "Nf6",   note: "" },
@@ -162,12 +145,11 @@ const GAME = {
     { move: "a3#",   note: "My opponent kindly allowed me to complete this mating picture. The black king walked all the way from g8 only to fall to the pickets at the edge of enemy camp." }
   ]
 };
-/* ============================================================== */
 
-  /* ===================== GAME 2 ===================== */
+/* ===================== GAME 2 ===================== */
 const GAME2 = {
-  white: "White Player",
-  black: "Black Player",
+  white: "Mueller",
+  black: "DosSantos DiSorbo",
   event: "Example Game 2",
   intro: "",
   moves: [
@@ -200,7 +182,7 @@ const GAME2 = {
     { move: "Qb5#",  note: "" }
   ]
 };
-  
+
 const GLYPH = { p:"♟", n:"♞", b:"♝", r:"♜", q:"♛", k:"♚" };
 const FILES = ["a","b","c","d","e","f","g","h"];
 
