@@ -162,14 +162,14 @@ const GAME2 = {
     {"san":"Nf6","note":"","fen":"r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R w KQkq - 4 4","from":"g8","to":"f6"},
     {"san":"Nxe5","note":"The four knights game, one of the most common openings in chess, offers the Halloween Gambit for white. I almost always jump at the opportunity...","fen":"r1bqkb1r/pppp1ppp/2n2n2/4N3/4P3/2N5/PPPP1PPP/R1BQKB1R b KQkq - 0 4","from":"f3","to":"e5"},
     {"san":"Nxe5","note":"","fen":"r1bqkb1r/pppp1ppp/5n2/4n3/4P3/2N5/PPPP1PPP/R1BQKB1R w KQkq - 0 5","from":"c6","to":"e5"},
-    {"san":"d4","note":"White sacrificed a knight but has a series of moves that will establish a massive center and substantial lead in development.","fen":"r1bqkb1r/pppp1ppp/5n2/4n3/3PP3/2N5/PPP2PPP/R1BQKB1R b KQkq - 0 5","from":"d2","to":"d4"},
+    {"san":"d4","note":"White sacrificed a knight but has a series of moves that will establish a massive center and a substantial lead in development.","fen":"r1bqkb1r/pppp1ppp/5n2/4n3/3PP3/2N5/PPP2PPP/R1BQKB1R b KQkq - 0 5","from":"d2","to":"d4"},
     {"san":"Ng6","note":"A robust defense! Nd6 is the main line; black maintains a positional advantage here.","fen":"r1bqkb1r/pppp1ppp/5nn1/8/3PP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 1 6","from":"e5","to":"g6"},
     {"san":"Bc4","note":"","fen":"r1bqkb1r/pppp1ppp/5nn1/8/2BPP3/2N5/PPP2PPP/R1BQK2R b KQkq - 2 6","from":"f1","to":"c4"},
-    {"san":"d6","note":"Not a terrible move, but Bb4, pinning my knight to the king, would better slow my momentum.","fen":"r1bqkb1r/ppp2ppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQK2R w KQkq - 0 7","from":"d7","to":"d6"},
+    {"san":"d6","note":"Not a terrible move, but Bb4, pinning my knight to the king, would better slow the building momentum.","fen":"r1bqkb1r/ppp2ppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQK2R w KQkq - 0 7","from":"d7","to":"d6"},
     {"san":"O-O","note":"Now my king is safe and my f-pawn can be pushed with reckless abandon.","fen":"r1bqkb1r/ppp2ppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQ1RK1 b kq - 1 7","from":"e1","to":"g1"},
     {"san":"Be7","note":"","fen":"r1bqk2r/ppp1bppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQ1RK1 w kq - 2 8","from":"f8","to":"e7"},
     {"san":"f4","note":"Just look at that center!","fen":"r1bqk2r/ppp1bppp/3p1nn1/8/2BPPP2/2N5/PPP3PP/R1BQ1RK1 b kq - 0 8","from":"f2","to":"f4"},
-    {"san":"Nd7","note":"Black squanders the positional advantage here. Blocks the light-squared bishop; the engine prefers taking on e4, giving back material but checking the growing pressure.","fen":"r1bqk2r/pppnbppp/3p2n1/8/2BPPP2/2N5/PPP3PP/R1BQ1RK1 w kq - 1 9","from":"f6","to":"d7"},
+    {"san":"Nd7","note":"Black squanders the positional advantage here. Blocks the light-squared bishop; the engine prefers taking on e4, giving back material but checking the oncoming wave.","fen":"r1bqk2r/pppnbppp/3p2n1/8/2BPPP2/2N5/PPP3PP/R1BQ1RK1 w kq - 1 9","from":"f6","to":"d7"},
     {"san":"f5","note":"The pawn storm is nearly overwhelming. Beginning to look dangerous for black.","fen":"r1bqk2r/pppnbppp/3p2n1/5P2/2BPP3/2N5/PPP3PP/R1BQ1RK1 b kq - 0 9","from":"f4","to":"f5"},
     {"san":"Ngf8","note":"Here is the essence of the Halloween Gambit: claim space, and stack pieces, on the kingside until your opponent succumbs to the pressure and makes a mistake. The correct move is the very unnatural Nh5; the knight is actually well-protected, and black can castle. Retreating with Nf8 blocks the king's escape, and the attack begins in earnest...","fen":"r1bqkn1r/pppnbppp/3p4/5P2/2BPP3/2N5/PPP3PP/R1BQ1RK1 w kq - 1 10","from":"g6","to":"f8"},
     {"san":"Qh5","note":"Now we are talking! Threat of mate in 1 on f7.","fen":"r1bqkn1r/pppnbppp/3p4/5P1Q/2BPP3/2N5/PPP3PP/R1B2RK1 b kq - 2 10","from":"d1","to":"h5"},
@@ -186,7 +186,8 @@ const GAME2 = {
 
 const GLYPH = { p:"♟", n:"♞", b:"♝", r:"♜", q:"♛", k:"♚" };
 const FILES = ["a","b","c","d","e","f","g","h"];
-
+let activeViewer = null;
+  
 function initChessViewer(root, GAME) {
   root.innerHTML = `
     <div class="game-header"></div>
@@ -280,11 +281,25 @@ function initChessViewer(root, GAME) {
   root.querySelector('[data-act="end"]').onclick   = () => { cur = plies.length; render(); };
   root.querySelector('[data-act="flip"]').onclick  = () => { flipped = !flipped; render(); };
 
+  const api = {
+    prev: () => { if (cur > 0) cur--; render(); },
+    next: () => { if (cur < plies.length) cur++; render(); }
+  };
+  root.addEventListener("mouseenter", () => { activeViewer = api; });
+  root.addEventListener("click", () => { activeViewer = api; });
+  if (!activeViewer) activeViewer = api;
+  
   render();
 }
 
 initChessViewer(document.getElementById("game1"), GAME1);
 initChessViewer(document.getElementById("game2"), GAME2);
+
+document.addEventListener("keydown", (e) => {
+  if (!activeViewer) return;
+  if (e.key === "ArrowLeft")  { activeViewer.prev(); e.preventDefault(); }
+  if (e.key === "ArrowRight") { activeViewer.next(); e.preventDefault(); }
+});
 </script>
 </body>
 </html>
