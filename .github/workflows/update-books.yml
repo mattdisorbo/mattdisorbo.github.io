@@ -14,14 +14,15 @@ jobs:
         with:
           node-version: 20
       - run: node scripts/update-books.mjs
-      - name: Commit changes
+     - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet; then
-            git add ${{ '' }}interests.html
-            git commit -m "Update Goodreads reviews"
-            git push
-          else
+          if git diff --quiet; then
             echo "No changes to commit."
+          else
+            git add interests.html
+            git commit -m "Update Goodreads reviews"
+            git pull --rebase origin main
+            git push
           fi
