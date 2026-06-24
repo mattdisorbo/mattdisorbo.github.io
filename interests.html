@@ -44,6 +44,8 @@
     .movelist .mv:hover { background: #eee; }
     .movelist .mv.current { background: #779556; color: #fff; }
     .movelist .num { color: #888; margin-right: 2px; }
+    .movelist .mv.annotated { color: #c0392b; }
+    .movelist .mv.annotated.current { color: #fff; }
     .game-header { font-size: 14px; color: #555; margin-bottom: 10px; }
   </style>
 </head>
@@ -265,7 +267,7 @@ function initChessViewer(root, GAME) {
         listEl.appendChild(num);
       }
       const mv = document.createElement("span");
-      mv.className = "mv" + (cur === i + 1 ? " current" : "");
+      mv.className = "mv" + (cur === i + 1 ? " current" : "") + (plies[i].note ? " annotated" : "");
       mv.textContent = plies[i].san + " ";
       mv.onclick = () => { cur = i + 1; render(); };
       listEl.appendChild(mv);
