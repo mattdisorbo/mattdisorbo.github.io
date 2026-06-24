@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title></title>
+  <title>Interests — Matt DiSorbo</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <style>
@@ -59,7 +59,7 @@
 </header>
 
 <div class="container">
-  <h1></h1>
+  <h1>Interests</h1>
 
   <section id="chess">
     <h2>Chess</h2>
@@ -70,8 +70,8 @@
   </section>
 </div>
 
-<script type="module">
-import { Chess } from "https://cdn.jsdelivr.net/npm/chess.js@1.4.0/+esm";
+<script>
+const START_FEN = "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1";
 
 /* ===================== GAME 1 ===================== */
 const GAME1 = {
@@ -79,70 +79,71 @@ const GAME1 = {
   black: "Adefolalu",
   event: "2/21/2024",
   intro: "A bishop sacrifice opens up the kingside; an ill-fated king walk ends in enemy camp.",
+  flipped: false,
   moves: [
-    { move: "e4",    note: "" },
-    { move: "d6",    note: "" },
-    { move: "d4",    note: "" },
-    { move: "Nf6",   note: "" },
-    { move: "Nc3",   note: "" },
-    { move: "g6",    note: "" },
-    { move: "Bg5",   note: "" },
-    { move: "Bg7",   note: "" },
-    { move: "Bc4",   note: "" },
-    { move: "h6",    note: "" },
-    { move: "Bh4",   note: "Better to retreat to the center of the board... but this move sets the game's main narrative in motion." },
-    { move: "O-O",   note: "" },
-    { move: "Qd2",   note: "" },
-    { move: "g5",    note: "" },
-    { move: "Bxg5",  note: "The engine prefers Bg3, but my pieces are well-positioned to attack on the kingside. I happily sacrifice my bishop for two very important king's pawns." },
-    { move: "hxg5",  note: "" },
-    { move: "Qxg5",  note: "" },
-    { move: "c5",    note: "The best move. Black maintains his advantage by trying to break up my strong center..." },
-    { move: "Nf3",   note: "" },
-    { move: "Bg4",   note: "...but needed to finish the threat with cxd4, forcing my knight on f3 to take back and lessening the pressure on the black king." },
-    { move: "e5",    note: "" },
-    { move: "Bxf3",  note: "Now the g-file will open and anything is possible." },
-    { move: "gxf3",  note: "" },
-    { move: "d5",    note: "Black's first big mistake. Needs Nh7 here to deflect the queen from the very dangerous g5 square... and to preserve this excellent defensive piece." },
-    { move: "exf6",  note: "" },
-    { move: "exf6",  note: "" },
-    { move: "Qxd5",  note: "Qg2 is better here to keep the pressure on the g-file, but I couldn't resist this centralizing move that creates a battery with the bishop and yields me a material advantage." },
-    { move: "Qe7+",  note: "" },
-    { move: "Ne2",   note: "" },
-    { move: "cxd4",  note: "" },
-    { move: "O-O-O", note: "This was a deeply enjoyable move. With one fell swoop my king is safe, the d-pawn is thrice attacked, my rook is on the semi-open d-file, my rooks are connected and my knight is still protected by the all-important bishop on c4." },
-    { move: "Rd8",   note: "Black's second mistake. the rook on f8 needs to defend the weak f-pawn." },
-    { move: "Qh5",   note: "Now the queen is in a threatening position from which she cannot be easily removed. If the rook was still on f8, the black queen could defend on e5; now that is impossible, since it would leave the f-pawn insufficiently defended." },
-    { move: "Nc6",   note: "" },
-    { move: "Rhg1",  note: "" },
-    { move: "Ne5",   note: "" },
-    { move: "Rxg7+", note: "A straightforward sacrifice. My pieces are perfectly positioned to flush out the now-vulnerable black king." },
-    { move: "Kxg7",  note: "" },
-    { move: "Rg1+",  note: "" },
-    { move: "Ng6",   note: "" },
-    { move: "Nf4",   note: "The all-important knight! Black's defense will now crumble." },
-    { move: "Rh8",   note: "" },
-    { move: "Rxg6+", note: "" },
-    { move: "fxg6",  note: "" },
-    { move: "Qxg6+", note: "" },
-    { move: "Kf8",   note: "" },
-    { move: "Ne6+",  note: "" },
-    { move: "Qxe6",  note: "The king is trapped and the queen must fall on the sword." },
-    { move: "Bxe6",  note: "" },
-    { move: "Ke7",   note: "" },
-    { move: "Qf7+",  note: "" },
-    { move: "Kd6",   note: "The king must begin his ignominious walk to avoid mate on his back line." },
-    { move: "Qd7+",  note: "" },
-    { move: "Kc5",   note: "" },
-    { move: "Qc7+",  note: "" },
-    { move: "Kb5",   note: "" },
-    { move: "Qxb7+", note: "" },
-    { move: "Ka5",   note: "" },
-    { move: "Qc7+",  note: "" },
-    { move: "Kb5",   note: "" },
-    { move: "Bd7+",  note: "" },
-    { move: "Kb4",   note: "" },
-    { move: "a3#",   note: "My opponent kindly allowed me to complete this mating picture. The black king walked all the way from g8 only to fall to the pickets at the edge of enemy camp." }
+    {"san":"e4","note":"","fen":"rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1","from":"e2","to":"e4"},
+    {"san":"d6","note":"","fen":"rnbqkbnr/ppp1pppp/3p4/8/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2","from":"d7","to":"d6"},
+    {"san":"d4","note":"","fen":"rnbqkbnr/ppp1pppp/3p4/8/3PP3/8/PPP2PPP/RNBQKBNR b KQkq - 0 2","from":"d2","to":"d4"},
+    {"san":"Nf6","note":"","fen":"rnbqkb1r/ppp1pppp/3p1n2/8/3PP3/8/PPP2PPP/RNBQKBNR w KQkq - 1 3","from":"g8","to":"f6"},
+    {"san":"Nc3","note":"","fen":"rnbqkb1r/ppp1pppp/3p1n2/8/3PP3/2N5/PPP2PPP/R1BQKBNR b KQkq - 2 3","from":"b1","to":"c3"},
+    {"san":"g6","note":"","fen":"rnbqkb1r/ppp1pp1p/3p1np1/8/3PP3/2N5/PPP2PPP/R1BQKBNR w KQkq - 0 4","from":"g7","to":"g6"},
+    {"san":"Bg5","note":"","fen":"rnbqkb1r/ppp1pp1p/3p1np1/6B1/3PP3/2N5/PPP2PPP/R2QKBNR b KQkq - 1 4","from":"c1","to":"g5"},
+    {"san":"Bg7","note":"","fen":"rnbqk2r/ppp1ppbp/3p1np1/6B1/3PP3/2N5/PPP2PPP/R2QKBNR w KQkq - 2 5","from":"f8","to":"g7"},
+    {"san":"Bc4","note":"","fen":"rnbqk2r/ppp1ppbp/3p1np1/6B1/2BPP3/2N5/PPP2PPP/R2QK1NR b KQkq - 3 5","from":"f1","to":"c4"},
+    {"san":"h6","note":"","fen":"rnbqk2r/ppp1ppb1/3p1npp/6B1/2BPP3/2N5/PPP2PPP/R2QK1NR w KQkq - 0 6","from":"h7","to":"h6"},
+    {"san":"Bh4","note":"Better to retreat to the center of the board... but this move sets the game's main narrative in motion.","fen":"rnbqk2r/ppp1ppb1/3p1npp/8/2BPP2B/2N5/PPP2PPP/R2QK1NR b KQkq - 1 6","from":"g5","to":"h4"},
+    {"san":"O-O","note":"","fen":"rnbq1rk1/ppp1ppb1/3p1npp/8/2BPP2B/2N5/PPP2PPP/R2QK1NR w KQ - 2 7","from":"e8","to":"g8"},
+    {"san":"Qd2","note":"","fen":"rnbq1rk1/ppp1ppb1/3p1npp/8/2BPP2B/2N5/PPPQ1PPP/R3K1NR b KQ - 3 7","from":"d1","to":"d2"},
+    {"san":"g5","note":"","fen":"rnbq1rk1/ppp1ppb1/3p1n1p/6p1/2BPP2B/2N5/PPPQ1PPP/R3K1NR w KQ - 0 8","from":"g6","to":"g5"},
+    {"san":"Bxg5","note":"The engine prefers Bg3, but my pieces are well-positioned to attack on the kingside. I happily sacrifice my bishop for two very important king's pawns.","fen":"rnbq1rk1/ppp1ppb1/3p1n1p/6B1/2BPP3/2N5/PPPQ1PPP/R3K1NR b KQ - 0 8","from":"h4","to":"g5"},
+    {"san":"hxg5","note":"","fen":"rnbq1rk1/ppp1ppb1/3p1n2/6p1/2BPP3/2N5/PPPQ1PPP/R3K1NR w KQ - 0 9","from":"h6","to":"g5"},
+    {"san":"Qxg5","note":"","fen":"rnbq1rk1/ppp1ppb1/3p1n2/6Q1/2BPP3/2N5/PPP2PPP/R3K1NR b KQ - 0 9","from":"d2","to":"g5"},
+    {"san":"c5","note":"The best move. Black maintains his advantage by trying to break up my strong center...","fen":"rnbq1rk1/pp2ppb1/3p1n2/2p3Q1/2BPP3/2N5/PPP2PPP/R3K1NR w KQ - 0 10","from":"c7","to":"c5"},
+    {"san":"Nf3","note":"","fen":"rnbq1rk1/pp2ppb1/3p1n2/2p3Q1/2BPP3/2N2N2/PPP2PPP/R3K2R b KQ - 1 10","from":"g1","to":"f3"},
+    {"san":"Bg4","note":"...but needed to finish the threat with cxd4, forcing my knight on f3 to take back and lessening the pressure on the black king.","fen":"rn1q1rk1/pp2ppb1/3p1n2/2p3Q1/2BPP1b1/2N2N2/PPP2PPP/R3K2R w KQ - 2 11","from":"c8","to":"g4"},
+    {"san":"e5","note":"","fen":"rn1q1rk1/pp2ppb1/3p1n2/2p1P1Q1/2BP2b1/2N2N2/PPP2PPP/R3K2R b KQ - 0 11","from":"e4","to":"e5"},
+    {"san":"Bxf3","note":"Now the g-file will open and anything is possible.","fen":"rn1q1rk1/pp2ppb1/3p1n2/2p1P1Q1/2BP4/2N2b2/PPP2PPP/R3K2R w KQ - 0 12","from":"g4","to":"f3"},
+    {"san":"gxf3","note":"","fen":"rn1q1rk1/pp2ppb1/3p1n2/2p1P1Q1/2BP4/2N2P2/PPP2P1P/R3K2R b KQ - 0 12","from":"g2","to":"f3"},
+    {"san":"d5","note":"Black's first big mistake. Needs Nh7 here to deflect the queen from the very dangerous g5 square... and to preserve this excellent defensive piece.","fen":"rn1q1rk1/pp2ppb1/5n2/2ppP1Q1/2BP4/2N2P2/PPP2P1P/R3K2R w KQ - 0 13","from":"d6","to":"d5"},
+    {"san":"exf6","note":"","fen":"rn1q1rk1/pp2ppb1/5P2/2pp2Q1/2BP4/2N2P2/PPP2P1P/R3K2R b KQ - 0 13","from":"e5","to":"f6"},
+    {"san":"exf6","note":"","fen":"rn1q1rk1/pp3pb1/5p2/2pp2Q1/2BP4/2N2P2/PPP2P1P/R3K2R w KQ - 0 14","from":"e7","to":"f6"},
+    {"san":"Qxd5","note":"Qg2 is better here to keep the pressure on the g-file, but I couldn't resist this centralizing move that creates a battery with the bishop and yields me a material advantage.","fen":"rn1q1rk1/pp3pb1/5p2/2pQ4/2BP4/2N2P2/PPP2P1P/R3K2R b KQ - 0 14","from":"g5","to":"d5"},
+    {"san":"Qe7+","note":"","fen":"rn3rk1/pp2qpb1/5p2/2pQ4/2BP4/2N2P2/PPP2P1P/R3K2R w KQ - 1 15","from":"d8","to":"e7"},
+    {"san":"Ne2","note":"","fen":"rn3rk1/pp2qpb1/5p2/2pQ4/2BP4/5P2/PPP1NP1P/R3K2R b KQ - 2 15","from":"c3","to":"e2"},
+    {"san":"cxd4","note":"","fen":"rn3rk1/pp2qpb1/5p2/3Q4/2Bp4/5P2/PPP1NP1P/R3K2R w KQ - 0 16","from":"c5","to":"d4"},
+    {"san":"O-O-O","note":"This was a deeply enjoyable move. With one fell swoop my king is safe, the d-pawn is thrice attacked, my rook is on the semi-open d-file, my rooks are connected and my knight is still protected by the all-important bishop on c4.","fen":"rn3rk1/pp2qpb1/5p2/3Q4/2Bp4/5P2/PPP1NP1P/2KR3R b - - 1 16","from":"e1","to":"c1"},
+    {"san":"Rd8","note":"Black's second mistake. the rook on f8 needs to defend the weak f-pawn.","fen":"rn1r2k1/pp2qpb1/5p2/3Q4/2Bp4/5P2/PPP1NP1P/2KR3R w - - 2 17","from":"f8","to":"d8"},
+    {"san":"Qh5","note":"Now the queen is in a threatening position from which she cannot be easily removed. If the rook was still on f8, the black queen could defend on e5; now that is impossible, since it would leave the f-pawn insufficiently defended.","fen":"rn1r2k1/pp2qpb1/5p2/7Q/2Bp4/5P2/PPP1NP1P/2KR3R b - - 3 17","from":"d5","to":"h5"},
+    {"san":"Nc6","note":"","fen":"r2r2k1/pp2qpb1/2n2p2/7Q/2Bp4/5P2/PPP1NP1P/2KR3R w - - 4 18","from":"b8","to":"c6"},
+    {"san":"Rhg1","note":"","fen":"r2r2k1/pp2qpb1/2n2p2/7Q/2Bp4/5P2/PPP1NP1P/2KR2R1 b - - 5 18","from":"h1","to":"g1"},
+    {"san":"Ne5","note":"","fen":"r2r2k1/pp2qpb1/5p2/4n2Q/2Bp4/5P2/PPP1NP1P/2KR2R1 w - - 6 19","from":"c6","to":"e5"},
+    {"san":"Rxg7+","note":"A straightforward sacrifice. My pieces are perfectly positioned to flush out the now-vulnerable black king.","fen":"r2r2k1/pp2qpR1/5p2/4n2Q/2Bp4/5P2/PPP1NP1P/2KR4 b - - 0 19","from":"g1","to":"g7"},
+    {"san":"Kxg7","note":"","fen":"r2r4/pp2qpk1/5p2/4n2Q/2Bp4/5P2/PPP1NP1P/2KR4 w - - 0 20","from":"g8","to":"g7"},
+    {"san":"Rg1+","note":"","fen":"r2r4/pp2qpk1/5p2/4n2Q/2Bp4/5P2/PPP1NP1P/2K3R1 b - - 1 20","from":"d1","to":"g1"},
+    {"san":"Ng6","note":"","fen":"r2r4/pp2qpk1/5pn1/7Q/2Bp4/5P2/PPP1NP1P/2K3R1 w - - 2 21","from":"e5","to":"g6"},
+    {"san":"Nf4","note":"The all-important knight! Black's defense will now crumble.","fen":"r2r4/pp2qpk1/5pn1/7Q/2Bp1N2/5P2/PPP2P1P/2K3R1 b - - 3 21","from":"e2","to":"f4"},
+    {"san":"Rh8","note":"","fen":"r6r/pp2qpk1/5pn1/7Q/2Bp1N2/5P2/PPP2P1P/2K3R1 w - - 4 22","from":"d8","to":"h8"},
+    {"san":"Rxg6+","note":"","fen":"r6r/pp2qpk1/5pR1/7Q/2Bp1N2/5P2/PPP2P1P/2K5 b - - 0 22","from":"g1","to":"g6"},
+    {"san":"fxg6","note":"","fen":"r6r/pp2q1k1/5pp1/7Q/2Bp1N2/5P2/PPP2P1P/2K5 w - - 0 23","from":"f7","to":"g6"},
+    {"san":"Qxg6+","note":"","fen":"r6r/pp2q1k1/5pQ1/8/2Bp1N2/5P2/PPP2P1P/2K5 b - - 0 23","from":"h5","to":"g6"},
+    {"san":"Kf8","note":"","fen":"r4k1r/pp2q3/5pQ1/8/2Bp1N2/5P2/PPP2P1P/2K5 w - - 1 24","from":"g7","to":"f8"},
+    {"san":"Ne6+","note":"","fen":"r4k1r/pp2q3/4NpQ1/8/2Bp4/5P2/PPP2P1P/2K5 b - - 2 24","from":"f4","to":"e6"},
+    {"san":"Qxe6","note":"The king is trapped and the queen must fall on the sword.","fen":"r4k1r/pp6/4qpQ1/8/2Bp4/5P2/PPP2P1P/2K5 w - - 0 25","from":"e7","to":"e6"},
+    {"san":"Bxe6","note":"","fen":"r4k1r/pp6/4BpQ1/8/3p4/5P2/PPP2P1P/2K5 b - - 0 25","from":"c4","to":"e6"},
+    {"san":"Ke7","note":"","fen":"r6r/pp2k3/4BpQ1/8/3p4/5P2/PPP2P1P/2K5 w - - 1 26","from":"f8","to":"e7"},
+    {"san":"Qf7+","note":"","fen":"r6r/pp2kQ2/4Bp2/8/3p4/5P2/PPP2P1P/2K5 b - - 2 26","from":"g6","to":"f7"},
+    {"san":"Kd6","note":"The king must begin his ignominious walk to avoid mate on his back line.","fen":"r6r/pp3Q2/3kBp2/8/3p4/5P2/PPP2P1P/2K5 w - - 3 27","from":"e7","to":"d6"},
+    {"san":"Qd7+","note":"","fen":"r6r/pp1Q4/3kBp2/8/3p4/5P2/PPP2P1P/2K5 b - - 4 27","from":"f7","to":"d7"},
+    {"san":"Kc5","note":"","fen":"r6r/pp1Q4/4Bp2/2k5/3p4/5P2/PPP2P1P/2K5 w - - 5 28","from":"d6","to":"c5"},
+    {"san":"Qc7+","note":"","fen":"r6r/ppQ5/4Bp2/2k5/3p4/5P2/PPP2P1P/2K5 b - - 6 28","from":"d7","to":"c7"},
+    {"san":"Kb5","note":"","fen":"r6r/ppQ5/4Bp2/1k6/3p4/5P2/PPP2P1P/2K5 w - - 7 29","from":"c5","to":"b5"},
+    {"san":"Qxb7+","note":"","fen":"r6r/pQ6/4Bp2/1k6/3p4/5P2/PPP2P1P/2K5 b - - 0 29","from":"c7","to":"b7"},
+    {"san":"Ka5","note":"","fen":"r6r/pQ6/4Bp2/k7/3p4/5P2/PPP2P1P/2K5 w - - 1 30","from":"b5","to":"a5"},
+    {"san":"Qc7+","note":"","fen":"r6r/p1Q5/4Bp2/k7/3p4/5P2/PPP2P1P/2K5 b - - 2 30","from":"b7","to":"c7"},
+    {"san":"Kb5","note":"","fen":"r6r/p1Q5/4Bp2/1k6/3p4/5P2/PPP2P1P/2K5 w - - 3 31","from":"a5","to":"b5"},
+    {"san":"Bd7+","note":"","fen":"r6r/p1QB4/5p2/1k6/3p4/5P2/PPP2P1P/2K5 b - - 4 31","from":"e6","to":"d7"},
+    {"san":"Kb4","note":"","fen":"r6r/p1QB4/5p2/8/1k1p4/5P2/PPP2P1P/2K5 w - - 5 32","from":"b5","to":"b4"},
+    {"san":"a3#","note":"My opponent kindly allowed me to complete this mating picture. The black king walked all the way from g8 only to fall to the pickets at the edge of enemy camp.","fen":"r6r/p1QB4/5p2/8/1k1p4/P4P2/1PP2P1P/2K5 b - - 0 32","from":"a2","to":"a3"}
   ]
 };
 
@@ -152,34 +153,35 @@ const GAME2 = {
   black: "DosSantos DiSorbo",
   event: "Example Game 2",
   intro: "",
+  flipped: true,
   moves: [
-    { move: "e4",    note: "" },
-    { move: "e5",    note: "" },
-    { move: "Nf3",   note: "" },
-    { move: "Nc6",   note: "" },
-    { move: "Nc3",   note: "" },
-    { move: "Nf6",   note: "" },
-    { move: "Nxe5",  note: "" },
-    { move: "Nxe5",  note: "" },
-    { move: "d4",    note: "" },
-    { move: "Ng6",   note: "" },
-    { move: "Bc4",   note: "" },
-    { move: "d6",    note: "" },
-    { move: "O-O",   note: "" },
-    { move: "Be7",   note: "" },
-    { move: "f4",    note: "" },
-    { move: "Nd7",   note: "" },
-    { move: "f5",    note: "" },
-    { move: "Ngf8",  note: "" },
-    { move: "Qh5",   note: "" },
-    { move: "g6",    note: "" },
-    { move: "fxg6",  note: "" },
-    { move: "Nf6",   note: "" },
-    { move: "Bxf7+", note: "" },
-    { move: "Kd7",   note: "" },
-    { move: "Qf5+",  note: "" },
-    { move: "Kc6",   note: "" },
-    { move: "Qb5#",  note: "" }
+    {"san":"e4","note":"","fen":"rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq - 0 1","from":"e2","to":"e4"},
+    {"san":"e5","note":"","fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/8/PPPP1PPP/RNBQKBNR w KQkq - 0 2","from":"e7","to":"e5"},
+    {"san":"Nf3","note":"","fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2","from":"g1","to":"f3"},
+    {"san":"Nc6","note":"","fen":"r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3","from":"b8","to":"c6"},
+    {"san":"Nc3","note":"","fen":"r1bqkbnr/pppp1ppp/2n5/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R b KQkq - 3 3","from":"b1","to":"c3"},
+    {"san":"Nf6","note":"","fen":"r1bqkb1r/pppp1ppp/2n2n2/4p3/4P3/2N2N2/PPPP1PPP/R1BQKB1R w KQkq - 4 4","from":"g8","to":"f6"},
+    {"san":"Nxe5","note":"","fen":"r1bqkb1r/pppp1ppp/2n2n2/4N3/4P3/2N5/PPPP1PPP/R1BQKB1R b KQkq - 0 4","from":"f3","to":"e5"},
+    {"san":"Nxe5","note":"","fen":"r1bqkb1r/pppp1ppp/5n2/4n3/4P3/2N5/PPPP1PPP/R1BQKB1R w KQkq - 0 5","from":"c6","to":"e5"},
+    {"san":"d4","note":"","fen":"r1bqkb1r/pppp1ppp/5n2/4n3/3PP3/2N5/PPP2PPP/R1BQKB1R b KQkq - 0 5","from":"d2","to":"d4"},
+    {"san":"Ng6","note":"","fen":"r1bqkb1r/pppp1ppp/5nn1/8/3PP3/2N5/PPP2PPP/R1BQKB1R w KQkq - 1 6","from":"e5","to":"g6"},
+    {"san":"Bc4","note":"","fen":"r1bqkb1r/pppp1ppp/5nn1/8/2BPP3/2N5/PPP2PPP/R1BQK2R b KQkq - 2 6","from":"f1","to":"c4"},
+    {"san":"d6","note":"","fen":"r1bqkb1r/ppp2ppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQK2R w KQkq - 0 7","from":"d7","to":"d6"},
+    {"san":"O-O","note":"","fen":"r1bqkb1r/ppp2ppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQ1RK1 b kq - 1 7","from":"e1","to":"g1"},
+    {"san":"Be7","note":"","fen":"r1bqk2r/ppp1bppp/3p1nn1/8/2BPP3/2N5/PPP2PPP/R1BQ1RK1 w kq - 2 8","from":"f8","to":"e7"},
+    {"san":"f4","note":"","fen":"r1bqk2r/ppp1bppp/3p1nn1/8/2BPPP2/2N5/PPP3PP/R1BQ1RK1 b kq - 0 8","from":"f2","to":"f4"},
+    {"san":"Nd7","note":"","fen":"r1bqk2r/pppnbppp/3p2n1/8/2BPPP2/2N5/PPP3PP/R1BQ1RK1 w kq - 1 9","from":"f6","to":"d7"},
+    {"san":"f5","note":"","fen":"r1bqk2r/pppnbppp/3p2n1/5P2/2BPP3/2N5/PPP3PP/R1BQ1RK1 b kq - 0 9","from":"f4","to":"f5"},
+    {"san":"Ngf8","note":"","fen":"r1bqkn1r/pppnbppp/3p4/5P2/2BPP3/2N5/PPP3PP/R1BQ1RK1 w kq - 1 10","from":"g6","to":"f8"},
+    {"san":"Qh5","note":"","fen":"r1bqkn1r/pppnbppp/3p4/5P1Q/2BPP3/2N5/PPP3PP/R1B2RK1 b kq - 2 10","from":"d1","to":"h5"},
+    {"san":"g6","note":"","fen":"r1bqkn1r/pppnbp1p/3p2p1/5P1Q/2BPP3/2N5/PPP3PP/R1B2RK1 w kq - 0 11","from":"g7","to":"g6"},
+    {"san":"fxg6","note":"","fen":"r1bqkn1r/pppnbp1p/3p2P1/7Q/2BPP3/2N5/PPP3PP/R1B2RK1 b kq - 0 11","from":"f5","to":"g6"},
+    {"san":"Nf6","note":"","fen":"r1bqkn1r/ppp1bp1p/3p1nP1/7Q/2BPP3/2N5/PPP3PP/R1B2RK1 w kq - 1 12","from":"d7","to":"f6"},
+    {"san":"Bxf7+","note":"","fen":"r1bqkn1r/ppp1bB1p/3p1nP1/7Q/3PP3/2N5/PPP3PP/R1B2RK1 b kq - 0 12","from":"c4","to":"f7"},
+    {"san":"Kd7","note":"","fen":"r1bq1n1r/pppkbB1p/3p1nP1/7Q/3PP3/2N5/PPP3PP/R1B2RK1 w - - 1 13","from":"e8","to":"d7"},
+    {"san":"Qf5+","note":"","fen":"r1bq1n1r/pppkbB1p/3p1nP1/5Q2/3PP3/2N5/PPP3PP/R1B2RK1 b - - 2 13","from":"h5","to":"f5"},
+    {"san":"Kc6","note":"","fen":"r1bq1n1r/ppp1bB1p/2kp1nP1/5Q2/3PP3/2N5/PPP3PP/R1B2RK1 w - - 3 14","from":"d7","to":"c6"},
+    {"san":"Qb5#","note":"","fen":"r1bq1n1r/ppp1bB1p/2kp1nP1/1Q6/3PP3/2N5/PPP3PP/R1B2RK1 b - - 4 14","from":"f5","to":"b5"}
   ]
 };
 
@@ -193,7 +195,7 @@ function initChessViewer(root, GAME) {
       <div class="board-col">
         <div class="board"></div>
         <div class="controls">
-          <button data-act="start" title="Start (Home)">⏮</button>
+          <button data-act="start" title="Start">⏮</button>
           <button data-act="prev" title="Previous">◀</button>
           <button data-act="next" title="Next">▶</button>
           <button data-act="end" title="End">⏭</button>
@@ -209,23 +211,14 @@ function initChessViewer(root, GAME) {
   const boardEl = root.querySelector(".board");
   const annoEl  = root.querySelector(".annotation");
   const listEl  = root.querySelector(".movelist");
+  const plies = GAME.moves;
 
-  const chess = new Chess();
-  const plies = [];
-  let parseError = null;
-  for (let i = 0; i < GAME.moves.length; i++) {
-    const m = chess.move(GAME.moves[i].move);
-    if (!m) { parseError = `Illegal/unrecognized move #${i + 1}: "${GAME.moves[i].move}"`; break; }
-    plies.push({ san: m.san, note: GAME.moves[i].note || "", fen: m.after, from: m.from, to: m.to });
-  }
-  const startFen = new Chess().fen();
-
-  let cur = 0, flipped = false;
+  let cur = 0, flipped = !!GAME.flipped;
 
   root.querySelector(".game-header").textContent =
     [GAME.event, (GAME.white && GAME.black) ? `${GAME.white} – ${GAME.black}` : ""].filter(Boolean).join(" · ");
 
-  const fenAt = i => i === 0 ? startFen : plies[i - 1].fen;
+  const fenAt = i => i === 0 ? START_FEN : plies[i - 1].fen;
 
   function renderBoard() {
     const rows = fenAt(cur).split(" ")[0].split("/");
@@ -288,7 +281,6 @@ function initChessViewer(root, GAME) {
   root.querySelector('[data-act="end"]').onclick   = () => { cur = plies.length; render(); };
   root.querySelector('[data-act="flip"]').onclick  = () => { flipped = !flipped; render(); };
 
-  if (parseError) annoEl.textContent = "⚠ " + parseError;
   render();
 }
 
