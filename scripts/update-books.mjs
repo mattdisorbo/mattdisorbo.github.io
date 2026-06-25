@@ -47,7 +47,6 @@ const cards = items.map(it => {
 }).join("\n");
 
 const stamp = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/New_York" });
-const stamp = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/New_York" });
 const html = await readFile(FILE, "utf8");
 const updated = html
   .replace(new RegExp(`${START}[\\s\\S]*?${END}`), `${START}\n${cards}\n      ${END}`)
