@@ -47,9 +47,10 @@ const cards = items.map(it => {
 }).join("\n");
 
 const stamp = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/New_York" });
+const stamp = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric", timeZone: "America/New_York" });
 const html = await readFile(FILE, "utf8");
 const updated = html
   .replace(new RegExp(`${START}[\\s\\S]*?${END}`), `${START}\n${cards}\n      ${END}`)
-  .replace(/<!-- UPDATED:START -->[\s\S]*?<!-- UPDATED:END -->/, `<!-- UPDATED:START -->${stamp}<!-- UPDATED:END -->`);     ${END}`);     ${END}`);
-if (updated === html) { console.log("No change."); }
-else { await writeFile(FILE, updated); console.log(`Updated ${items.length} reviews.`); }
+  .replace(/<!-- UPDATED:START -->[\s\S]*?<!-- UPDATED:END -->/, `<!-- UPDATED:START -->${stamp}<!-- UPDATED:END -->`);
+await writeFile(FILE, updated);
+console.log(`Wrote ${items.length} reviews; stamped ${stamp}.`);
