@@ -202,25 +202,32 @@ a:hover {
   margin-bottom: 1.15rem;
   line-height: 1.6;
 }
+/* Paper titles: not bold, black like the rest; underline only on hover
+   (so the reader can tell it's a link) */
+#research li strong { font-weight: 400; }
+#research li strong a { color: #222831; text-decoration: none; }
+#research li strong a:hover { color: #000; text-decoration: underline; }
+
+/* Author / venue line */
 #research li em {
-  color: #5d6975;          /* muted author / venue line */
+  color: #222831;
   font-style: italic;
 }
 
-/* Underlined journal / venue so it's easy to spot */
+/* Journal / venue: bold + underlined so it stands out */
 #research li em .venue,
 #research .venue {
+  font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 2px;
   color: #222831;
 }
 
-/* Award / honor highlight */
+/* Honor line — plain dark text, no green */
 #research li em.award,
 .award {
-  color: #1e8e3e;
-  font-weight: 500;
-  font-style: normal;
+  color: #222831;
+  font-style: italic;
 }
 
 /* extra buffer below research */
