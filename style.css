@@ -1,256 +1,259 @@
-/* === Academic website styling — refreshed 2026 === */
-
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap');
-
-:root {
-  --ink: #1f2a33;
-  --muted: #5d6975;
-  --line: #d9ded9;
-  --paper: #fffdfa;
-  --panel: #f6f7f3;
-  --slate: #2c3e50;
-  --evergreen: #244238;
-  --sage: #78937f;
-  --copper: #9b6946;
-}
-
-/* === Global === */
-* { box-sizing: border-box; }
-
+/* === Global Styles === */
 body {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 16px;
-  color: var(--ink);
-  background: var(--paper);
+  font-family: Georgia, serif;
+  background: #f4f6f8;     /* soft gray-blue */
+  color: #222831;          /* dark slate text */
+  padding: 2rem;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
 }
 
 /* === Container === */
 .container {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 2.25rem 1.25rem 4rem;
-  text-align: center;         /* centers the home hero (photo + name) */
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  margin-bottom: 0.25em;
 }
 
 /* === Profile picture === */
 .profile-pic {
-  width: 155px;
-  border-radius: 8px;
-  margin-top: 0.5em;
-  margin-bottom: 0.9em;
-  box-shadow: 0 2px 10px rgba(31, 42, 51, 0.12);
+  width: 150px;
+  border-radius: 50%;
+  margin-top: 2.5em;
+  margin-bottom: 0.5em;
 }
 
 /* === Headings === */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Source Serif Pro', Georgia, serif;
-  color: var(--ink);
-  line-height: 1.2;
+h1, h2, h3 {
+  color: #000;             /* black headings */
 }
 
-h1 {
-  font-weight: 600;
-  font-size: 2rem;
-  margin: 0.2rem 0 0.6rem;
+/* === Navigation (in-page pill nav, if used) === */
+nav {
+  margin: 20px 0;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
 }
 
-/* Major section heading with full-width rule (Caleb-style) */
-h2 {
-  font-weight: 600;
-  font-size: 1.75rem;
-  border-bottom: 2px solid var(--slate);
-  padding-bottom: 0.2rem;
-  margin: 1.75rem 0 1rem;
+nav a {
+  padding: 6px 16px;
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 6px;
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
 }
 
-/* Section subheads (Publications, Under Review, Harvard Business School, ...) */
-h3 {
-  font-weight: 600;
-  font-size: 1.3rem;
-  color: var(--evergreen);
-  border-bottom: 1px solid var(--line);
-  padding-bottom: 0.15rem;
-  margin: 2rem 0 0.9rem;
+nav a:hover {
+  background: #000;
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* === Sections === */
 section {
   text-align: left;
-  margin-top: 1.75rem;
-  color: var(--ink);
+  margin-top: 2rem;
+  color: #222831;
 }
 
-#research { margin-bottom: 4rem; }
+/* === Links === */
+a {
+  color: #375a7f;          /* steel blue */
+  text-decoration: none;
+}
+a:hover {
+  color: #000;
+  text-decoration: underline;
+}
 
-/* === Publication / list entries === */
-section ul {
+/* === Buttons (reviews) === */
+#new-quotes-btn,
+#new-quotes-btn2 {
+  border: 2px solid #000;
+  border-radius: 8px;
+  background-color: #fff;
+  color: #000;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: 0.8rem;
+}
+
+#new-quotes-btn:hover,
+#new-quotes-btn2:hover {
+  background-color: #000;
+  color: #fff;
+}
+
+/* === Quote boxes === */
+#quotes-container,
+#quotes-container2 {
+  border: 2px solid #375a7f;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+#quotes-container blockquote,
+#quotes-container2 blockquote {
+  border-left: 3px solid #000;
+  padding-left: 1rem;
+  margin: 1rem 0;
+  color: #222831;
+}
+
+/* === Social icons === */
+.social-icons { margin-top: 10px; text-align: center; }
+.social-icons a { margin: 0 10px; color: #375a7f; text-decoration: none; }
+.social-icons a:hover { color: #000; }
+
+.social-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0 20px;
+}
+.social-buttons a {
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 20px;
+  color: #fff;
+  background: #555;
+  transition: background 0.2s, transform 0.2s;
+}
+.social-buttons a:hover {
+  background: #222;
+  transform: translateY(-2px);
+}
+.social-buttons a i { font-size: 0.85rem; }
+.social-buttons { margin-top: 30px; transform: translateY(12px); }
+
+/* === Top banner nav === */
+.site-banner {
+  background: #f2f2f0;
+  border-bottom: 1px solid #ddd;
+  width: 100%;
+}
+.banner-nav {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.5em 1em;
+}
+.banner-nav .brand {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: #000;
+  margin-right: auto;      /* push page links to the right */
+}
+.banner-nav .brand:hover { color: #000; text-decoration: none; }
+.banner-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.banner-nav a:hover {
+  color: #000;
+  text-decoration: underline;
+}
+.banner-nav a.active {
+  background: #555;
+  color: #fff;
+  border-radius: 4px;
+  padding: 0.15em 0.5em;
+}
+
+/* ============================================================
+   Caleb-Kwon-style RESEARCH formatting (kept from the refresh)
+   Structure/layout only — colors follow the steel-blue palette
+   ============================================================ */
+
+/* Section headers with rules */
+#research h2,
+#media h2 {
+  font-size: 1.6rem;
+  border-bottom: 2px solid #2c3e50;
+  padding-bottom: 0.2rem;
+  margin: 1.75rem 0 1rem;
+}
+
+#research h3 {
+  font-size: 1.25rem;
+  border-bottom: 1px solid #d9ded9;
+  padding-bottom: 0.15rem;
+  margin: 2rem 0 0.9rem;
+}
+
+/* Clean, bulletless publication list */
+#research ul {
   list-style: none;
   padding-left: 0;
   margin: 0 0 0.5rem;
 }
-
-section li {
+#research li {
   margin-bottom: 1.15rem;
   line-height: 1.6;
 }
-
-section li strong { font-weight: 700; }
-
-section li em {
-  color: var(--muted);
+#research li em {
+  color: #5d6975;          /* muted author / venue line */
   font-style: italic;
 }
 
+/* Underlined journal / venue so it's easy to spot */
+#research li em .venue,
+#research .venue {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  color: #222831;
+}
+
 /* Award / honor highlight */
+#research li em.award,
 .award {
   color: #1e8e3e;
   font-weight: 500;
   font-style: normal;
 }
 
-/* === Bio paragraphs === */
-#bio p { margin: 0.65rem 0; }
+/* extra buffer below research */
+#research { margin-bottom: 5rem; }
 
-/* === Links === */
-a {
-  color: var(--evergreen);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--copper);
-  text-decoration: underline;
-}
-.journal-link { font-weight: 600; }
-
-/* === Blockquotes (teaching reviews) === */
-blockquote {
-  border-left: 3px solid var(--sage);
-  padding: 0.4rem 0 0.4rem 1rem;
-  margin: 1rem 0;
-  color: var(--ink);
-  background: var(--panel);
-  border-radius: 0 4px 4px 0;
-}
-
-/* === Buttons (reviews) === */
-#new-quotes-btn,
-#new-quotes-btn2 {
-  border: 1px solid var(--evergreen);
-  border-radius: 999px;
-  background-color: #fff;
-  color: var(--evergreen);
-  font-weight: 700;
-  padding: 0.55rem 1.2rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 0.8rem;
-}
-#new-quotes-btn:hover,
-#new-quotes-btn2:hover {
-  background-color: var(--evergreen);
-  color: #fff;
-}
-
-#quotes-container,
-#quotes-container2 {
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  padding: 1.5rem;
-  margin-top: 1rem;
-  background-color: #fff;
-  box-shadow: 0 2px 8px rgba(31, 42, 51, 0.06);
-}
-
-/* === Social icons === */
-.social-icons { margin-top: 10px; text-align: center; }
-.social-icons a { margin: 0 10px; color: var(--evergreen); }
-.social-icons a:hover { color: var(--copper); }
-
-.social-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  margin: 26px 0 20px;
-}
-.social-buttons a {
-  width: 38px;
-  height: 38px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 18px;
-  color: #fff;
-  background: var(--evergreen);
-  transition: background 0.2s, transform 0.2s;
-  text-decoration: none;
-}
-.social-buttons a:hover {
-  background: var(--copper);
-  transform: translateY(-2px);
-}
-.social-buttons a i { font-size: 0.95rem; }
-
-/* === Top banner nav === */
-.site-banner {
-  background: var(--slate);
-  width: 100%;
-  box-shadow: 0 1px 0 rgba(31, 42, 51, 0.15);
-}
-.banner-nav {
-  max-width: 960px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  gap: 1.35rem;
-  padding: 0.7rem 1.25rem;
-}
-.banner-nav .brand {
-  font-family: 'Source Serif Pro', Georgia, serif;
-  font-weight: 700;
-  font-size: 1.1rem;
-  color: #fff;
-  margin-right: auto;      /* push page links to the right */
-}
-.banner-nav .brand:hover { color: #fff; text-decoration: none; }
-.banner-nav a {
-  color: #cdd1d5;
-  font-weight: 600;
-  font-size: 0.95rem;
-  text-decoration: none;
-  transition: color 0.15s ease;
-}
-.banner-nav a:hover { color: #fff; text-decoration: none; }
-.banner-nav a.active {
-  color: #fff;
-  border-bottom: 2px solid var(--sage);
-  padding-bottom: 2px;
-}
-
-/* === Media Mentions page === */
+/* === Media Mentions page (cards with branded thumbnail tiles) === */
 .media-list {
   display: grid;
   gap: 1rem;
-  max-width: 760px;
+  max-width: 720px;
   margin: 0 auto;
 }
 .media-card {
   display: flex;
   align-items: stretch;
   min-height: 110px;
-  border: 1px solid var(--line);
+  border: 1px solid #d9ded9;
   border-radius: 8px;
-  background: linear-gradient(180deg, #fff 0%, var(--panel) 100%);
+  background: linear-gradient(180deg, #fff 0%, #f6f7f3 100%);
   overflow: hidden;
   text-decoration: none;
   color: inherit;
   transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
 }
 .media-card:hover {
-  border-color: var(--sage);
+  border-color: #375a7f;
   transform: translateY(-2px);
   box-shadow: 0 4px 14px rgba(31, 42, 51, 0.08);
   text-decoration: none;
@@ -263,38 +266,40 @@ blockquote {
   text-align: center;
   padding: 0.75rem;
   color: #fff;
+  font-family: Georgia, serif;
   font-weight: 700;
   line-height: 1.15;
 }
 .media-thumb span { display: block; }
 /* Branded outlet tiles */
-.t-hbs      { background: #a51c30; font-family: 'Source Serif Pro', Georgia, serif; font-size: 0.95rem; }
+.t-hbs      { background: #a51c30; font-size: 0.95rem; }
 .t-mit      { background: #750014; font-size: 1rem; letter-spacing: 0.02em; }
 .t-time     { background: #cc0000; }
 .t-time span { border: 3px solid #fff; padding: 0.25rem 0.55rem; font-size: 1.45rem; font-weight: 700; letter-spacing: 0.06em; }
-.t-fortune  { background: #1a1a1a; font-family: 'Source Serif Pro', Georgia, serif; font-size: 1.35rem; letter-spacing: 0.14em; }
+.t-fortune  { background: #1a1a1a; font-size: 1.35rem; letter-spacing: 0.14em; }
 
 .media-body { padding: 0.9rem 1.1rem; }
 .media-outlet {
-  color: var(--copper);
-  font-size: 0.72rem;
+  color: #375a7f;
+  font-family: Georgia, serif;
+  font-size: 0.75rem;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
   margin-bottom: 0.3rem;
 }
 .media-title {
-  font-family: 'Source Serif Pro', Georgia, serif;
-  font-size: 1.08rem;
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: var(--ink);
+  color: #000;
   line-height: 1.25;
 }
-.media-card:hover .media-title { color: var(--evergreen); }
+.media-card:hover .media-title { color: #375a7f; }
 .media-meta {
   margin-top: 0.4rem;
-  color: var(--muted);
-  font-size: 0.9rem;
+  color: #5d6975;
+  font-size: 0.92rem;
   line-height: 1.4;
 }
 
@@ -304,19 +309,17 @@ blockquote {
 .book-card img { width: 70px; flex: 0 0 auto; border-radius: 3px; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
 .book-info { flex: 1; }
 .book-title { font-weight: 600; font-size: 15px; }
-.book-title a { color: var(--ink); text-decoration: none; }
+.book-title a { color: #333; text-decoration: none; }
 .book-title a:hover { text-decoration: underline; }
-.book-author { font-size: 13px; color: var(--muted); margin-bottom: 4px; }
+.book-author { font-size: 13px; color: #666; margin-bottom: 4px; }
 .book-stars { color: #e0a800; font-size: 14px; margin-bottom: 6px; }
-.book-review { font-size: 14px; line-height: 1.5; color: var(--ink); }
-.book-review a { color: var(--sage); }
+.book-review { font-size: 14px; line-height: 1.5; color: #333; }
+.book-review a { color: #779556; }
 
 .last-updated { font-size: 12px; color: #999; text-align: center; margin-top: 24px; }
 
 /* === Responsive === */
 @media (max-width: 600px) {
-  .banner-nav { flex-wrap: wrap; gap: 0.8rem 1rem; }
-  .banner-nav .brand { flex: 1 1 100%; margin-right: 0; }
   .media-card { flex-direction: column; }
   .media-thumb { flex: 0 0 auto; width: 100%; min-height: 84px; }
 }
