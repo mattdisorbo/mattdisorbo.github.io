@@ -49,7 +49,6 @@
     .game-header { font-size: 14px; color: #555; margin-bottom: 10px; }
   
     /* Reading log: bookshelf photo + rubric + sortable table + chart */
-    .reading-hint { max-width:720px; margin:0 auto 6px; font-size:12px; color:#888; }
     .bookshelf { display:block; width:100%; max-width:720px; height:auto; margin:6px auto 18px;
       border-radius:6px; box-shadow:0 2px 10px rgba(0,0,0,.18); }
     .rating-rubric { max-width:720px; margin:0 auto 20px; }
@@ -61,10 +60,8 @@
     .reading-table-wrap { max-width:720px; margin:0 auto; max-height:640px; overflow:auto;
       border:1px solid #e2e2e0; border-radius:6px; }
     #reading-table { width:100%; border-collapse:collapse; font-size:14px; font-family:Georgia, serif; }
-    #reading-table th, #reading-table td { text-align:left; vertical-align:top; padding:6px 9px;
-      border-bottom:1px solid #ececea; }
-    #reading-table thead th { position:sticky; top:0; z-index:2; background:#f2f2f0;
-      border-bottom:2px solid #375a7f; white-space:nowrap; }
+    #reading-table th, #reading-table td { text-align:left; vertical-align:top; padding:6px 9px; border-bottom:1px solid #ececea; }
+    #reading-table thead th { position:sticky; top:0; z-index:2; background:#f2f2f0; border-bottom:2px solid #375a7f; white-space:nowrap; }
     #reading-table thead .th-label { display:inline-block; cursor:pointer; user-select:none; font-weight:bold; }
     #reading-table thead .arrow { color:#375a7f; font-size:11px; }
     #reading-table thead input { display:block; margin-top:4px; width:100%; box-sizing:border-box;
@@ -76,16 +73,13 @@
     .table-count { max-width:720px; margin:8px auto 0; font-size:12px; color:#888; }
     .chart-title { max-width:720px; margin:28px auto 8px; font-family:Georgia,serif; font-weight:bold; font-size:16px; }
     .ratings-chart { max-width:720px; margin:0 auto; }
-    .chart-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:10px; }
-    .chart-ctrl-label { font-size:13px; color:#555; }
-    .brk { font-family:Georgia,serif; font-size:13px; padding:4px 12px; border:1px solid #375a7f;
-      background:#fff; color:#375a7f; border-radius:999px; cursor:pointer; }
+    .chart-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; }
+    .brk { font-family:Georgia,serif; font-size:13px; padding:4px 12px; border:1px solid #375a7f; background:#fff; color:#375a7f; border-radius:999px; cursor:pointer; }
     .brk.active { background:#375a7f; color:#fff; }
-    #ratings-svg { width:100%; height:auto; display:block; }
-    .chart-legend { display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:12px; }
-    .legchip { display:inline-flex; align-items:center; gap:5px; font-size:12px; color:#333; cursor:pointer; user-select:none; }
-    .legchip .sw { width:11px; height:11px; border-radius:2px; display:inline-block; }
-    .legchip.off { opacity:.4; text-decoration:line-through; }
+    #ratings-area svg { width:100%; height:auto; display:block; }
+    .facet-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:14px 16px; }
+    .facet { margin:0; }
+    .facet figcaption { font-size:12px; color:#333; margin-bottom:2px; font-variant-numeric:tabular-nums; }
   </style>
 </head>
 <body>
@@ -130,7 +124,6 @@
 
     <script>window.READING_DATA = [{"period":"2019 H2","book":"Flash Boys","author":"Lewis","rating":1.9},{"period":"2019 H2","book":"The Elegance of the Hedgehog","author":"Barbery","rating":2.8},{"period":"2019 H2","book":"Educated","author":"Westover","rating":2.9},{"period":"2019 H2","book":"The Future of Capitalism: Facing the New Anxieties","author":"Collier","rating":3.2},{"period":"2019 H2","book":"Churchill's Ministry of Ungentlemanly Warfare","author":"Milton","rating":3.3},{"period":"2019 H2","book":"Roman Warfare","author":"Goldsworthy","rating":3.3},{"period":"2019 H2","book":"The Killer Angels: A Novel of the Civil War","author":"Shaara","rating":3.4},{"period":"2019 H2","book":"The Sirens of Titan","author":"Vonnegut","rating":3.4},{"period":"2019 H2","book":"Memoirs of a Geisha","author":"Golden","rating":3.5},{"period":"2019 H2","book":"Bad Blood: Secrets and Lies in a Silicon Valley Startup","author":"Carreyrou","rating":3.6},{"period":"2019 H2","book":"The Complete Personal Memoirs of Ulysses S. Grant","author":"Grant","rating":3.7},{"period":"2019 H2","book":"Superintelligence","author":"Bostrum","rating":3.9},{"period":"2019 H2","book":"Why We Sleep","author":"Walker","rating":4},{"period":"2019 H2","book":"Shoe Dog","author":"Knight","rating":4.1},{"period":"2019 H2","book":"The Wise Man's Fear","author":"Rothfuss","rating":4.1},{"period":"2019 H2","book":"Dr. Sleep","author":"King","rating":4.1},{"period":"2019 H2","book":"The Black Swan: The Impact of the Highly Improbable","author":"Taleb","rating":4.2},{"period":"2019 H2","book":"Galapagos","author":"Vonnegut","rating":4.2},{"period":"2019 H2","book":"The Name of the Wind","author":"Rothfuss","rating":4.3},{"period":"2019 H2","book":"A People's History of the United States","author":"Zinn","rating":4.6},{"period":"2019 H2","book":"Fooled by Randomness","author":"Taleb","rating":4.6},{"period":"2019 H2","book":"Grant","author":"Chernow","rating":4.65},{"period":"2019 H2","book":"Hamilton","author":"Chernow","rating":4.8},{"period":"2020 H1","book":"Tanking to the Top: The Philadelphia 76ers and the Most Audacious Process in the History of Professional Sports","author":"Weitzman","rating":2.8},{"period":"2020 H1","book":"Thinking In Bets: Making Smarter Decisions When You Don't Have All The Facts","author":"Duke","rating":3},{"period":"2020 H1","book":"Strategy: A History","author":"Freedman","rating":3.2},{"period":"2020 H1","book":"American Lion: Andrew Jackson in the White House","author":"Meacham","rating":3.2},{"period":"2020 H1","book":"Why Stock Markets Crash: Critical Events in Complex Financial Systems","author":"Sornette","rating":3.3},{"period":"2020 H1","book":"The Wild Places","author":"Macfarlane","rating":3.3},{"period":"2020 H1","book":"Thinking Fast and Slow","author":"Kahnemann","rating":3.4},{"period":"2020 H1","book":"Antifragile: Things That Gain From Disorder","author":"Taleb","rating":3.4},{"period":"2020 H1","book":"The Man Who Solved The Market: How Jim Simons Launched the Quant Revolution","author":"Zuckerman","rating":3.4},{"period":"2020 H1","book":"The Guns of August","author":"Tuchman","rating":3.4},{"period":"2020 H1","book":"A Dog's Porpoise","author":"Ross","rating":3.5},{"period":"2020 H1","book":"Just Mercy: A Story of Justice and Redemption","author":"Stevenson","rating":3.5},{"period":"2020 H1","book":"How Not to Die","author":"Greger","rating":3.6},{"period":"2020 H1","book":"Against the Gods: The Remarkable Story of Risk","author":"Bernstein","rating":3.6},{"period":"2020 H1","book":"What Works: Gender Equality by Design","author":"Bohnet","rating":3.6},{"period":"2020 H1","book":"The Ascent of Money: A Financial History of the World","author":"Ferguson","rating":3.7},{"period":"2020 H1","book":"Augustus: The Life of Rome's First Emperor","author":"Everett","rating":3.8},{"period":"2020 H1","book":"Zero to One","author":"Theil","rating":3.8},{"period":"2020 H1","book":"Cicero: The Life and Times of Rome's Greatest Politician","author":"Everett","rating":3.9},{"period":"2020 H1","book":"If This Isn't Nice, What Is? Advice for the Young","author":"Vonnegut","rating":3.9},{"period":"2020 H1","book":"Epistulae Morales","author":"Seneca","rating":3.9},{"period":"2020 H1","book":"Finding Ultra: Rejecting Middle Age, Becoming One of the World's Fittest Men, and Discovering Myself","author":"Roll","rating":4},{"period":"2020 H1","book":"Player Piano","author":"Vonnegut","rating":4},{"period":"2020 H1","book":"Barbarians at the Gate: The Fall of RJR Nabisco","author":"Burrough and Helyar","rating":4.1},{"period":"2020 H1","book":"Stormlight Archives: The Way of Kings","author":"Sanderson","rating":4.2},{"period":"2020 H1","book":"The Years of Lyndon Johnson Volume II: Means of Ascent","author":"Caro","rating":4.4},{"period":"2020 H1","book":"The Stand","author":"King","rating":4.6},{"period":"2020 H1","book":"The Years of Lyndon Johnson Volume I: The Path to Power","author":"Caro","rating":4.7},{"period":"2020 H1","book":"Washington: A Life","author":"Chernow","rating":4.7},{"period":"2020 H1","book":"The Years of Lyndon Johnson Volume III: Master of the Senate","author":"Caro","rating":4.8},{"period":"2020 H2","book":"The Great Influenza: The Story of the Deadliest Pandemic in History","author":"Barry","rating":2.3},{"period":"2020 H2","book":"The Biggest Bluff","author":"Konnikova","rating":3.3},{"period":"2020 H2","book":"Thomas Jefferson: The Art of Power","author":"Meacham","rating":3.4},{"period":"2020 H2","book":"Dear Girls","author":"Wong","rating":3.5},{"period":"2020 H2","book":"The Victory Machine: The Making and Unmaking of the Warriors Dynasty","author":"Strauss","rating":3.5},{"period":"2020 H2","book":"Born a Crime","author":"Noah","rating":3.6},{"period":"2020 H2","book":"Hadrian and the Triumph of Rome","author":"Everitt","rating":3.6},{"period":"2020 H2","book":"The Stormlight Archives: Words of Radiance","author":"Sanderson","rating":3.7},{"period":"2020 H2","book":"While Mortals Sleep","author":"Vonnegut","rating":3.7},{"period":"2020 H2","book":"The Lord of the Rings: The Two Towers","author":"Tolkein","rating":3.7},{"period":"2020 H2","book":"The Accidental Billionaires: The Founding of Facebook","author":"Mezrich","rating":3.75},{"period":"2020 H2","book":"More Money Than God","author":"Mallaby","rating":3.8},{"period":"2020 H2","book":"Animal Farm","author":"Orwell","rating":3.8},{"period":"2020 H2","book":"The Importance of Being Earnest","author":"Wilde","rating":3.9},{"period":"2020 H2","book":"The Lord of the Rings: The Fellowship of the Ring","author":"Tolkein","rating":3.95},{"period":"2020 H2","book":"The Stormlight Archives: Oathbringer","author":"Sanderson","rating":4},{"period":"2020 H2","book":"Bossypants","author":"Fey","rating":4},{"period":"2020 H2","book":"The Lord of the Rings: The Return of the King","author":"Tolkein","rating":4.2},{"period":"2020 H2","book":"The Years of Lyndon B. Johnson Volume IV: The Passage of Power","author":"Caro","rating":4.6},{"period":"2020 H2","book":"The Power Broker: Robert Moses and the Fall of New York","author":"Caro","rating":4.75},{"period":"2021 H1","book":"Waiting on a Cowboy","author":"Ryan","rating":1.3},{"period":"2021 H1","book":"The Eye of the World","author":"Jordan","rating":2.5},{"period":"2021 H1","book":"The Warburgs: The Twentieth-Century Odyssey of a Remarkable Jewish Family","author":"Chernow","rating":2.8},{"period":"2021 H1","book":"How to Avoid a Climate Disaster: The Solutions we Have and the Breakthroughs we Need","author":"Gates","rating":2.9},{"period":"2021 H1","book":"Think and Grow Rich","author":"Hill","rating":3.2},{"period":"2021 H1","book":"Kissinger's Shadow: The Long Reach of America's Most Controversial Statesman","author":"Grandin","rating":3.3},{"period":"2021 H1","book":"It","author":"King","rating":3.4},{"period":"2021 H1","book":"American Dirt","author":"Cummings","rating":3.45},{"period":"2021 H1","book":"The Handmaid's Tale","author":"Atwood","rating":3.5},{"period":"2021 H1","book":"A Short History of Financial Euphoria","author":"Galbraith","rating":3.6},{"period":"2021 H1","book":"Working","author":"Caro","rating":3.7},{"period":"2021 H1","book":"Boys in the Boat: Nine Americans and Their Epic Quest for Gold at the 1936 Berlin Olympics","author":"Brown","rating":4.1},{"period":"2021 H1","book":"The Decadent Society: How We Became the Victims of Our Own Success","author":"Douthat","rating":4.2},{"period":"2021 H1","book":"Caste: The Origins of our Discontents","author":"Wilkerson","rating":4.4},{"period":"2021 H1","book":"Battle Cry of Freedom: The Civil War Era","author":"McPherson","rating":4.6},{"period":"2021 H2","book":"Boomerang: Travels in the New Third World","author":"Lewis","rating":2.5},{"period":"2021 H2","book":"The Financial Diaries: How American Families Cope in a World of Uncertainty","author":"Murdoch, Schneider","rating":3.2},{"period":"2021 H2","book":"The Immortal Life of Henrietta Lacks","author":"Skloot","rating":3.3},{"period":"2021 H2","book":"Greenlights","author":"McConaughey","rating":3.6},{"period":"2021 H2","book":"The Institute","author":"King","rating":3.7},{"period":"2021 H2","book":"Titan: The Life of John D. Rockefeller, Sr.","author":"Chernow","rating":3.7},{"period":"2021 H2","book":"Dune","author":"Herbert","rating":3.9},{"period":"2021 H2","book":"The Assassin's Apprentice","author":"Hobb","rating":4.2},{"period":"2022 H1","book":"The Alchemist","author":"Coehlo","rating":2.9},{"period":"2022 H1","book":"A Court of Thorns and Roses","author":"Maas","rating":3},{"period":"2022 H1","book":"Portfolios of the Poor: How the World's Poor Live on $2 a Day","author":"Rutherford et al","rating":3.5},{"period":"2022 H1","book":"The Silent Patient","author":"Michaelides","rating":3.6},{"period":"2022 H1","book":"The Royal Assassin","author":"Hobb","rating":3.7},{"period":"2022 H1","book":"Jurassic Park","author":"Crichton","rating":3.8},{"period":"2022 H1","book":"The City-State of Boston: The Rise and Fall of an Atlantic Power, 1630-1865","author":"Peterson","rating":3.9},{"period":"2022 H1","book":"Steve Jobs","author":"Isaacson","rating":3.95},{"period":"2022 H1","book":"The Long Walk","author":"King as Bachman","rating":4},{"period":"2022 H1","book":"Privilege: Harvard and the Education of the Ruling Class","author":"Douthat","rating":4},{"period":"2022 H1","book":"The Winter King: A Novel of Arthur","author":"Cornwall","rating":4.1},{"period":"2022 H1","book":"The Civil War, Vol. 1: Fort Sumter to Perryville","author":"Foote","rating":4.3},{"period":"2022 H2","book":"Pawn of Prophecy","author":"Eddings","rating":3.6},{"period":"2022 H2","book":"Annihilation","author":"VanderMeer","rating":3.7},{"period":"2022 H2","book":"Enemy of God: A Novel of Arthur","author":"Cornwall","rating":4},{"period":"2022 H2","book":"The Civil War, Vol. II: Fredericksburg to Meridian","author":"Foote","rating":4.1},{"period":"2023 H1","book":"Acceptance (The Southern Reach Trilogy: Book III)","author":"VanderMeer","rating":2.9},{"period":"2023 H1","book":"Authority (The Southern Reach Trilogy: Book II)","author":"VanderMeer","rating":3.3},{"period":"2023 H1","book":"Angels and Demons","author":"Brown","rating":3.7},{"period":"2023 H1","book":"Assassin's Quest (The Farseer Trilogy: Book III)","author":"Hobb","rating":3.75},{"period":"2023 H1","book":"American Spring: Lexington, Concord and the Road to Revolution","author":"Borneman","rating":3.85},{"period":"2023 H1","book":"Ways and Means: Lincoln and his Cabinet and the Financing of the Civil War","author":"Lowenstein","rating":3.9},{"period":"2023 H1","book":"The Blade Itself (The First Law Trilogy: Book I)","author":"Abercrombie","rating":4},{"period":"2023 H1","book":"The Devil in the White City: Murder, Magic and Madness at the Fair That Changed America","author":"Larson","rating":4.1},{"period":"2023 H1","book":"Barbarians at the Gate: The Fall of RJR Nabisco","author":"Burrough and Helyar","rating":4.1},{"period":"2023 H2","book":"It's All About Clout","author":"Foster","rating":2.1},{"period":"2023 H2","book":"The Dark Tower: The Gunslinger","author":"King","rating":2.9},{"period":"2023 H2","book":"Unreasonable Hospitality","author":"Guidara","rating":3.5},{"period":"2023 H2","book":"Before They Are Hanged (The First Law Trilogy: Book II)","author":"Abercrombie","rating":3.6},{"period":"2023 H2","book":"Nugly","author":"Ross","rating":3.7},{"period":"2023 H2","book":"Tomorrow, and Tomorrow, and Tomorrow","author":"Zevin","rating":3.7},{"period":"2023 H2","book":"Excalibur: A Novel of Arthur (Book III in the Warlord Chronicles)","author":"Cornwell","rating":3.85},{"period":"2023 H2","book":"Benjamin Franklin: An American Life","author":"Isaacson","rating":3.9},{"period":"2023 H2","book":"The Decadent Society: How We Became Victims of Our Own Successes","author":"Douthat","rating":4},{"period":"2023 H2","book":"Last Argument of Kings (The First Law Trilogy: Book III)","author":"Abercrombie","rating":4.4},{"period":"2023 H2","book":"Common Ground: A Turbulent Decade in the Lives of Three American Families","author":"Lukas","rating":4.6},{"period":"2024 H1","book":"Gardens of the Moon: A Tale of the Malazan Book of the Fallen","author":"Ericson","rating":3.2},{"period":"2024 H1","book":"Fire and Blood","author":"R. R. Martin","rating":3.4},{"period":"2024 H1","book":"The Federalist Papers","author":"Hamilton, Madison, Jay","rating":3.5},{"period":"2024 H1","book":"All The Beauty In The World","author":"Bringley","rating":3.6},{"period":"2024 H1","book":"Blood Meridian; or, The Evening Redness in the West","author":"McCarthy","rating":3.7},{"period":"2024 H1","book":"Autumn in the Heavenly Kingdom: China, the West, and the Epic Story of the Taiping Civil War","author":"Platt","rating":3.8},{"period":"2024 H1","book":"Stoner","author":"Williams","rating":4.5},{"period":"2024 H1","book":"The Lies of Locke Lamora","author":"Lynch","rating":4.6},{"period":"2025 H1","book":"Dead Poets Society","author":"Kleinbaum","rating":2.9},{"period":"2025 H1","book":"The Exchange","author":"Grisham","rating":3.2},{"period":"2025 H1","book":"The Road","author":"McCarthy","rating":3.4},{"period":"2025 H1","book":"Death of a Salesman","author":"Miller","rating":3.6},{"period":"2025 H1","book":"Queen of Sorcery: The Belgariad Book 2","author":"Eddings","rating":3.6},{"period":"2025 H1","book":"The Heroes: Book Two in the Great Leveler Trilogy","author":"Abercrombie","rating":3.7},{"period":"2025 H1","book":"American Gods","author":"Gaiman","rating":3.8},{"period":"2025 H1","book":"Red Rising","author":"Brown","rating":4.1},{"period":"2025 H1","book":"The Civil War: Red River to Appomattox","author":"Foote","rating":4.6},{"period":"2025 H2","book":"Mark Twain","author":"Chernow","rating":2.5},{"period":"2025 H2","book":"Golden Son","author":"Brown","rating":3.2},{"period":"2025 H2","book":"Republic of Thieves: The Gentlemen Bastards Sequence Book Three","author":"Lynch","rating":3.9},{"period":"2025 H2","book":"Lonesome Dove","author":"McMurtry","rating":4.5},{"period":"2025 H2","book":"Shogun","author":"Clavell","rating":4.6},{"period":"2026 H1","book":"The Will of the Many: Hierarchy, Book I","author":"Islington","rating":2.9},{"period":"2026 H1","book":"Ship of Magic: Book One of the Liveship Traders","author":"Hobb","rating":3.9},{"period":"2026 H1","book":"The Devils","author":"Abercrombie","rating":3.9},{"period":"2026 H1","book":"City of Thieves","author":"Benioff","rating":4},{"period":"2026 H1","book":"Misery","author":"King","rating":4.45},{"period":"2026 H1","book":"The Prize: The Epic Quest for Oil, Money, and Power","author":"Yergin","rating":4.5}];</script>
 
-    <p class="reading-hint">Click a column heading to sort; type in any box to search.</p>
     <div class="reading-table-wrap">
       <table id="reading-table">
         <thead>
@@ -155,41 +148,32 @@
       const countEl = document.getElementById("reading-count");
       const filters = { period:"", book:"", author:"", rating:"" };
       let sortKey = null, sortDir = 1;
-      const pass = row => COLS.every(k => {
-        const f = filters[k].trim().toLowerCase();
-        return !f || String(row[k]).toLowerCase().includes(f);
-      });
+      const pass = row => COLS.every(k => { const f=filters[k].trim().toLowerCase(); return !f || String(row[k]).toLowerCase().includes(f); });
       function render() {
         let rows = BOOKS.filter(pass);
         if (sortKey) rows = rows.slice().sort((a, b) => {
-          let x = a[sortKey], y = b[sortKey];
-          if (sortKey === "rating") { x = (x===""?-Infinity:+x); y = (y===""?-Infinity:+y); return (x-y)*sortDir; }
-          return String(x).localeCompare(String(y), undefined, {numeric:true}) * sortDir;
+          let x=a[sortKey], y=b[sortKey];
+          if (sortKey==="rating"){ x=(x===""?-Infinity:+x); y=(y===""?-Infinity:+y); return (x-y)*sortDir; }
+          return String(x).localeCompare(String(y), undefined, {numeric:true})*sortDir;
         });
-        tbody.innerHTML = "";
-        const frag = document.createDocumentFragment();
-        for (const r of rows) {
-          const tr = document.createElement("tr");
-          for (const k of COLS) {
-            const td = document.createElement("td");
-            td.className = k;
-            td.textContent = (k === "rating" && r[k] !== "") ? Number(r[k]).toFixed(1) : r[k];
-            tr.appendChild(td);
-          }
-          frag.appendChild(tr);
-        }
+        tbody.innerHTML="";
+        const frag=document.createDocumentFragment();
+        for (const r of rows){ const tr=document.createElement("tr");
+          for (const k of COLS){ const td=document.createElement("td"); td.className=k;
+            td.textContent=(k==="rating"&&r[k]!=="")?Number(r[k]).toFixed(1):r[k]; tr.appendChild(td); }
+          frag.appendChild(tr); }
         tbody.appendChild(frag);
-        countEl.textContent = rows.length + " of " + BOOKS.length + " books";
+        countEl.textContent=rows.length+" of "+BOOKS.length+" books";
       }
       table.querySelectorAll(".th-label").forEach(lbl => lbl.addEventListener("click", () => {
-        const key = lbl.closest("th").dataset.key;
-        if (sortKey === key) sortDir *= -1; else { sortKey = key; sortDir = 1; }
-        table.querySelectorAll(".arrow").forEach(a => a.textContent = "");
-        lbl.querySelector(".arrow").textContent = sortDir === 1 ? " ▲" : " ▼";
+        const key=lbl.closest("th").dataset.key;
+        if (sortKey===key) sortDir*=-1; else { sortKey=key; sortDir=1; }
+        table.querySelectorAll(".arrow").forEach(a=>a.textContent="");
+        lbl.querySelector(".arrow").textContent = sortDir===1?" ▲":" ▼";
         render();
       }));
       table.querySelectorAll("thead input").forEach(inp => {
-        inp.addEventListener("input", () => { filters[inp.dataset.key] = inp.value; render(); });
+        inp.addEventListener("input", () => { filters[inp.dataset.key]=inp.value; render(); });
         inp.addEventListener("click", e => e.stopPropagation());
       });
       render();
@@ -199,81 +183,74 @@
     <div class="chart-title">Ratings distribution</div>
     <div class="ratings-chart">
       <div class="chart-controls">
-        <span class="chart-ctrl-label">Break down by:</span>
         <button class="brk active" data-dim="none">None</button>
         <button class="brk" data-dim="period">Date read</button>
         <button class="brk" data-dim="author">Author</button>
       </div>
-      <svg id="ratings-svg" viewBox="0 0 720 320" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Histogram of book ratings"></svg>
-      <div class="chart-legend" id="chart-legend" style="display:none"></div>
+      <div id="ratings-area"></div>
     </div>
 
     <script>
     (function () {
-      const DATA = window.READING_DATA.filter(b => b.rating !== "" && !isNaN(+b.rating));
-      const svg = document.getElementById("ratings-svg");
-      const legendEl = document.getElementById("chart-legend");
+      const ALL = window.READING_DATA.filter(b => b.rating !== "" && !isNaN(+b.rating));
+      const area = document.getElementById("ratings-area");
       const btns = document.querySelectorAll(".brk");
       const PALETTE = ["#375a7f","#c0392b","#e0a800","#27856a","#7d5ba6","#d1701f","#4b8bbe","#a0483d","#5b8c5a","#b5651d","#8e44ad","#16a085","#c94f7c"];
-      const OTHER = "#9aa0a6";
       const NBINS = 10, BINW = 0.5;
-      let dim = "none", hidden = new Set();
-      function cats() {
-        if (dim === "none") return { list:["All"], color:{All:"#375a7f"}, of:()=>"All" };
-        if (dim === "period") {
-          const list = [...new Set(DATA.map(b=>b.period))].sort();
-          const color = {}; list.forEach((c,i)=> color[c]=PALETTE[i%PALETTE.length]);
-          return { list, color, of:b=>b.period };
-        }
-        const counts = {};
-        DATA.forEach(b => counts[b.author]=(counts[b.author]||0)+1);
-        const top = Object.entries(counts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(e=>e[0]);
-        const topSet = new Set(top);
-        const list = [...top];
-        if (DATA.some(b=>!topSet.has(b.author))) list.push("Other");
-        const color = {}; list.forEach((c,i)=> color[c] = c==="Other"?OTHER:PALETTE[i%PALETTE.length]);
-        return { list, color, of:b=> topSet.has(b.author)?b.author:"Other" };
-      }
       const bin = r => Math.max(0, Math.min(NBINS-1, Math.floor(r/BINW)));
-      function render() {
-        const C = cats();
-        const visible = C.list.filter(c=>!hidden.has(c));
-        const bins = Array.from({length:NBINS}, ()=>({}));
-        DATA.forEach(b => { const c=C.of(b); if(hidden.has(c))return; const i=bin(+b.rating); bins[i][c]=(bins[i][c]||0)+1; });
-        const totals = bins.map(o=>Object.values(o).reduce((a,c)=>a+c,0));
-        let yMax = Math.max(1, ...totals);
-        const step = yMax<=10?2:yMax<=20?5:yMax<=50?10:20;
-        yMax = Math.ceil(yMax/step)*step;
-        const W=720,H=320,mL=34,mR=12,mT=12,mB=42, plotW=W-mL-mR, plotH=H-mT-mB, slot=plotW/NBINS, bw=slot*0.78;
-        const sy = v => mT+plotH-(v/yMax)*plotH;
+      const mean = arr => arr.reduce((s,b)=>s+ +b.rating,0)/arr.length;
+      const binsOf = arr => { const a=Array(NBINS).fill(0); arr.forEach(b=>a[bin(+b.rating)]++); return a; };
+
+      function svgHist(arr, W, H, color, yMax, big){
+        const bins=binsOf(arr);
+        const mL=big?34:22, mR=big?12:8, mT=big?12:8, mB=big?42:18;
+        const plotW=W-mL-mR, plotH=H-mT-mB, slot=plotW/NBINS, bw=slot*0.8;
+        const sy=v=>mT+plotH-(v/yMax)*plotH;
+        const xOf=r=>mL+(r/5)*plotW;
         let s="";
-        for (let t=0;t<=yMax;t+=step){ const y=sy(t);
-          s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(W-mR)+'" y2="'+y+'" stroke="#ececeb"/>';
-          s+='<text x="'+(mL-5)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="#888">'+t+'</text>'; }
-        for (let i=0;i<NBINS;i++){
-          const x=mL+i*slot+(slot-bw)/2; let acc=0;
-          for (const c of visible){ const v=bins[i][c]||0; if(!v)continue;
-            const h=(v/yMax)*plotH, y=mT+plotH-acc-h;
-            s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+C.color[c]+'"/>';
-            acc+=h; }
-          const lo=(i*BINW).toFixed(1).replace(/\.0$/,""), hi=((i+1)*BINW).toFixed(1).replace(/\.0$/,"");
-          s+='<text x="'+(mL+i*slot+slot/2).toFixed(1)+'" y="'+(H-mB+16)+'" text-anchor="middle" font-size="9" fill="#666">'+lo+'–'+hi+'</text>';
+        if (big){
+          const step=yMax<=10?2:yMax<=20?5:yMax<=50?10:20;
+          for(let t=0;t<=yMax;t+=step){const y=sy(t);
+            s+='<line x1="'+mL+'" y1="'+y+'" x2="'+(W-mR)+'" y2="'+y+'" stroke="#ececeb"/>';
+            s+='<text x="'+(mL-5)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="#888">'+t+'</text>';}
+        } else {
+          s+='<line x1="'+mL+'" y1="'+(mT+plotH)+'" x2="'+(W-mR)+'" y2="'+(mT+plotH)+'" stroke="#ddd"/>';
         }
-        s+='<text x="'+(mL+plotW/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="11" fill="#444">Rating</text>';
-        svg.innerHTML=s;
-        if (dim==="none"){ legendEl.style.display="none"; legendEl.innerHTML=""; return; }
-        legendEl.style.display="flex"; legendEl.innerHTML="";
-        C.list.forEach(c=>{
-          const chip=document.createElement("span");
-          chip.className="legchip"+(hidden.has(c)?" off":"");
-          const sw=document.createElement("span"); sw.className="sw"; sw.style.background=C.color[c];
-          chip.appendChild(sw); chip.appendChild(document.createTextNode(c));
-          chip.onclick=()=>{ hidden.has(c)?hidden.delete(c):hidden.add(c); render(); };
-          legendEl.appendChild(chip);
-        });
+        for(let i=0;i<NBINS;i++){ const v=bins[i]; if(!v)continue;
+          const h=(v/yMax)*plotH, x=mL+i*slot+(slot-bw)/2, y=mT+plotH-h;
+          s+='<rect x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" width="'+bw.toFixed(1)+'" height="'+h.toFixed(1)+'" fill="'+color+'"/>'; }
+        const m=mean(arr), mx=xOf(m);
+        s+='<line x1="'+mx.toFixed(1)+'" y1="'+mT+'" x2="'+mx.toFixed(1)+'" y2="'+(mT+plotH)+'" stroke="#222" stroke-width="1.4" stroke-dasharray="3,3"/>';
+        if (big){
+          s+='<text x="'+(mx+4).toFixed(1)+'" y="'+(mT+11)+'" font-size="11" fill="#222">avg '+m.toFixed(1)+'</text>';
+          for(let i=0;i<NBINS;i++){ const lo=(i*BINW).toFixed(1).replace(/\.0$/,""),hi=((i+1)*BINW).toFixed(1).replace(/\.0$/,"");
+            s+='<text x="'+(mL+i*slot+slot/2).toFixed(1)+'" y="'+(H-mB+16)+'" text-anchor="middle" font-size="9" fill="#666">'+lo+'–'+hi+'</text>'; }
+          s+='<text x="'+(mL+plotW/2)+'" y="'+(H-4)+'" text-anchor="middle" font-size="11" fill="#444">Rating</text>';
+        } else {
+          s+='<text x="'+mL+'" y="'+(H-5)+'" text-anchor="start" font-size="8" fill="#999">0</text>';
+          s+='<text x="'+(W-mR)+'" y="'+(H-5)+'" text-anchor="end" font-size="8" fill="#999">5</text>';
+        }
+        return '<svg viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet">'+s+'</svg>';
       }
-      btns.forEach(b=> b.onclick=()=>{ btns.forEach(x=>x.classList.remove("active")); b.classList.add("active"); dim=b.dataset.dim; hidden=new Set(); render(); });
-      render();
+      function renderSingle(){
+        let yMax=Math.max(1,...binsOf(ALL));
+        const step=yMax<=10?2:yMax<=20?5:yMax<=50?10:20; yMax=Math.ceil(yMax/step)*step;
+        area.className=""; area.innerHTML=svgHist(ALL,720,320,"#375a7f",yMax,true);
+      }
+      function renderFacets(cats){
+        let maxBin=1; cats.forEach(c=>{ const bs=binsOf(c.arr); maxBin=Math.max(maxBin, Math.max.apply(null,bs)); });
+        const step=maxBin<=10?2:maxBin<=20?5:10; const yMax=Math.ceil(maxBin/step)*step;
+        area.className="facet-grid";
+        area.innerHTML=cats.map(c=>'<figure class="facet"><figcaption><b>'+c.name+'</b> · '+c.arr.length+' · avg '+mean(c.arr).toFixed(1)+'</figcaption>'+svgHist(c.arr,240,150,c.color,yMax,false)+'</figure>').join("");
+      }
+      function periodCats(){ const names=[...new Set(ALL.map(b=>b.period))].sort();
+        return names.map((n,i)=>({name:n, arr:ALL.filter(b=>b.period===n), color:PALETTE[i%PALETTE.length]})); }
+      function authorCats(){ const c={}; ALL.forEach(b=>c[b.author]=(c[b.author]||0)+1);
+        const names=Object.entries(c).filter(e=>e[1]>=3).sort((a,b)=>b[1]-a[1]).map(e=>e[0]);
+        return names.map((n,i)=>({name:n, arr:ALL.filter(b=>b.author===n), color:PALETTE[i%PALETTE.length]})); }
+      function render(dim){ if(dim==="period")renderFacets(periodCats()); else if(dim==="author")renderFacets(authorCats()); else renderSingle(); }
+      btns.forEach(b=> b.onclick=()=>{ btns.forEach(x=>x.classList.remove("active")); b.classList.add("active"); render(b.dataset.dim); });
+      render("none");
     })();
     </script>
   </section>
