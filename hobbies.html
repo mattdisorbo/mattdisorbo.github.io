@@ -49,15 +49,15 @@
     .game-header { font-size: 14px; color: #555; margin-bottom: 10px; }
   
     /* Reading log: bookshelf photo + rubric + sortable table + chart */
-    .bookshelf { display:block; width:100%; max-width:720px; height:auto; margin:6px auto 18px;
+    .bookshelf { display:block; width:100%; max-width:100%; height:auto; margin:6px auto 18px;
       border-radius:6px; box-shadow:0 2px 10px rgba(0,0,0,.18); }
-    .rating-rubric { max-width:720px; margin:0 auto 20px; }
+    .rating-rubric { max-width:100%; margin:0 auto 20px; }
     .rating-rubric .rubric-title { font-family:Georgia,serif; font-weight:bold; font-size:14px; }
     .rating-rubric ul { list-style:none; padding:0; margin:6px 0 0; display:flex; flex-wrap:wrap; gap:6px 18px; }
     .rating-rubric li { font-size:13px; color:#333; display:flex; align-items:center; gap:6px; }
     .rating-rubric li b { font-variant-numeric:tabular-nums; }
     .rating-rubric .dot { width:10px; height:10px; border-radius:50%; display:inline-block; }
-    .reading-table-wrap { max-width:720px; margin:0 auto; max-height:640px; overflow:auto;
+    .reading-table-wrap { max-width:100%; margin:0 auto; max-height:640px; overflow:auto;
       border:1px solid #e2e2e0; border-radius:6px; }
     #reading-table { width:100%; border-collapse:collapse; font-size:14px; font-family:Georgia, serif; }
     #reading-table th, #reading-table td { text-align:left; vertical-align:top; padding:6px 9px; border-bottom:1px solid #ececea; }
@@ -71,9 +71,9 @@
     #reading-table td.period { white-space:nowrap; color:#555; }
     #reading-table tbody tr:hover { background:#f7f7f4; }
     .rating-pill { display:inline-block; min-width:34px; text-align:center; padding:1px 8px; border-radius:999px; font-size:12.5px; font-weight:bold; font-variant-numeric:tabular-nums; }
-    .table-count { max-width:720px; margin:8px auto 0; font-size:12px; color:#888; }
+    .table-count { max-width:100%; margin:8px auto 0; font-size:12px; color:#888; }
     .chart-title { max-width:720px; margin:28px auto 8px; font-family:Georgia,serif; font-weight:bold; font-size:16px; }
-    .ratings-chart { max-width:720px; margin:0 auto; }
+    .ratings-chart { max-width:100%; margin:0 auto; }
     .chart-controls { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px; }
     .brk { font-family:Georgia,serif; font-size:13px; padding:4px 12px; border:1px solid #375a7f; background:#fff; color:#375a7f; border-radius:999px; cursor:pointer; }
     .brk.active { background:#375a7f; color:#fff; }
@@ -81,6 +81,17 @@
     .facet-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(190px,1fr)); gap:14px 16px; }
     .facet { margin:0; }
     .facet figcaption { font-size:12px; color:#333; margin-bottom:2px; font-variant-numeric:tabular-nums; }
+    /* Two-column hobbies layout (Chess | Reading) */
+    .container { max-width: 1120px; }
+    .hobbies-cols { display:flex; gap:36px; align-items:flex-start; }
+    .hobbies-cols .col { flex:1 1 0; min-width:0; }
+    .chess-wrap { max-width:100%; }
+    #chess .board { width: min(80vw, 320px); }
+    #reading-table th[data-key="rating"], #reading-table td.rating { min-width:92px; }
+    .rating-slider { display:flex; flex-direction:column; align-items:stretch; gap:2px; margin-top:4px; font-weight:normal; }
+    .rating-slider input[type="range"] { width:100%; margin:0; accent-color:#375a7f; }
+    .rating-slider-val { font-size:11px; color:#555; font-variant-numeric:tabular-nums; }
+    @media (max-width: 860px) { .hobbies-cols { flex-direction:column; gap:0; } }
   </style>
 </head>
 <body>
@@ -95,6 +106,8 @@
 </header>
 
 <div class="container">
+  <div class="hobbies-cols">
+    <div class="col">
 
   <section id="chess">
     <h2>Chess</h2>
@@ -104,6 +117,8 @@
     <div class="chess-wrap" id="game2"></div>
     <div class="chess-wrap" id="game3"></div>
   </section>
+    </div>
+    <div class="col">
 
   <section id="reading">
     <h2>Reading</h2>
@@ -131,7 +146,7 @@
             <th data-key="period"><span class="th-label">Date read<span class="arrow"></span></span><input data-key="period" placeholder="Search…" /></th>
             <th data-key="book"><span class="th-label">Title<span class="arrow"></span></span><input data-key="book" placeholder="Search…" /></th>
             <th data-key="author"><span class="th-label">Author<span class="arrow"></span></span><input data-key="author" placeholder="Search…" /></th>
-            <th data-key="rating" class="num"><span class="th-label">Rating<span class="arrow"></span></span><input data-key="rating" placeholder="Search…" /></th>
+            <th data-key="rating" class="num"><span class="th-label">Rating<span class="arrow"></span></span><div class="rating-slider"><input type="range" data-key="rating" min="0" max="5" step="0.5" value="0" /><span class="rating-slider-val">All</span></div></th>
           </tr>
         </thead>
         <tbody></tbody>
@@ -146,10 +161,14 @@
       const table = document.getElementById("reading-table");
       const tbody = table.querySelector("tbody");
       const countEl = document.getElementById("reading-count");
-      const filters = { period:"", book:"", author:"", rating:"" };
+      const filters = { period:"", book:"", author:"" };
+      let ratingMin = 0;
       let sortKey = null, sortDir = 1;
       const ratingColor = r => { r=+r; return r<2?"#c0392b":r<3?"#d1701f":r<3.5?"#e0a800":r<4?"#5b8c5a":r<4.5?"#27856a":"#1e8e3e"; };
-      const pass = row => COLS.every(k => { const f=filters[k].trim().toLowerCase(); return !f || String(row[k]).toLowerCase().includes(f); });
+      const pass = row => {
+        if (ratingMin > 0 && (row.rating === "" || +row.rating < ratingMin)) return false;
+        return ["period","book","author"].every(k => { const f=filters[k].trim().toLowerCase(); return !f || String(row[k]).toLowerCase().includes(f); });
+      };
       function render() {
         let rows = BOOKS.filter(pass);
         if (sortKey) rows = rows.slice().sort((a, b) => {
@@ -175,10 +194,14 @@
         lbl.querySelector(".arrow").textContent = sortDir===1?" ▲":" ▼";
         render();
       }));
-      table.querySelectorAll("thead input").forEach(inp => {
+      table.querySelectorAll('thead input:not([type="range"])').forEach(inp => {
         inp.addEventListener("input", () => { filters[inp.dataset.key]=inp.value; render(); });
         inp.addEventListener("click", e => e.stopPropagation());
       });
+      const slider = table.querySelector('input[type="range"][data-key="rating"]');
+      const sliderVal = table.querySelector(".rating-slider-val");
+      slider.addEventListener("input", () => { ratingMin = +slider.value; sliderVal.textContent = ratingMin===0 ? "All" : "\u2265 "+ratingMin.toFixed(1); render(); });
+      table.querySelector(".rating-slider").addEventListener("click", e => e.stopPropagation());
       render();
     })();
     </script>
@@ -256,6 +279,8 @@
     })();
     </script>
   </section>
+    </div>
+  </div>
 </div>
 
 <script>
