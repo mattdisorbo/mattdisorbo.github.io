@@ -70,6 +70,7 @@
     #reading-table td.book, #reading-table td.author { min-width:120px; }
     #reading-table td.period { white-space:nowrap; color:#555; }
     #reading-table tbody tr:hover { background:#f7f7f4; }
+    .rating-pill { display:inline-block; min-width:34px; text-align:center; padding:1px 8px; border-radius:999px; font-size:12.5px; font-weight:bold; font-variant-numeric:tabular-nums; }
     .table-count { max-width:720px; margin:8px auto 0; font-size:12px; color:#888; }
     .chart-title { max-width:720px; margin:28px auto 8px; font-family:Georgia,serif; font-weight:bold; font-size:16px; }
     .ratings-chart { max-width:720px; margin:0 auto; }
@@ -111,7 +112,6 @@
     <img class="bookshelf" src="bookshelf.jpg" alt="My bookshelf" />
 
     <div class="rating-rubric">
-      <span class="rubric-title">How I rate</span>
       <ul>
         <li><span class="dot" style="background:#c0392b"></span><b>&lt; 2</b> anti-recommend</li>
         <li><span class="dot" style="background:#d1701f"></span><b>2–3</b> would not recommend</li>
@@ -141,13 +141,14 @@
 
     <script>
     (function () {
-      const BOOKS = window.READING_DATA;
+      const BOOKS = (function(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));const t=a[i];a[i]=a[j];a[j]=t;}return a;})(window.READING_DATA);
       const COLS = ["period","book","author","rating"];
       const table = document.getElementById("reading-table");
       const tbody = table.querySelector("tbody");
       const countEl = document.getElementById("reading-count");
       const filters = { period:"", book:"", author:"", rating:"" };
       let sortKey = null, sortDir = 1;
+      const ratingColor = r => { r=+r; return r<2?"#c0392b":r<3?"#d1701f":r<3.5?"#e0a800":r<4?"#5b8c5a":r<4.5?"#27856a":"#1e8e3e"; };
       const pass = row => COLS.every(k => { const f=filters[k].trim().toLowerCase(); return !f || String(row[k]).toLowerCase().includes(f); });
       function render() {
         let rows = BOOKS.filter(pass);
@@ -160,7 +161,9 @@
         const frag=document.createDocumentFragment();
         for (const r of rows){ const tr=document.createElement("tr");
           for (const k of COLS){ const td=document.createElement("td"); td.className=k;
-            td.textContent=(k==="rating"&&r[k]!=="")?Number(r[k]).toFixed(1):r[k]; tr.appendChild(td); }
+            if (k==="rating" && r[k]!==""){ const p=document.createElement("span"); p.className="rating-pill"; const bg=ratingColor(r[k]); p.style.background=bg; p.style.color=(bg==="#e0a800")?"#3d2c00":"#fff"; p.textContent=Number(r[k]).toFixed(1); td.appendChild(p); }
+            else td.textContent=r[k];
+            tr.appendChild(td); }
           frag.appendChild(tr); }
         tbody.appendChild(frag);
         countEl.textContent=rows.length+" of "+BOOKS.length+" books";
